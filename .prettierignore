@@ -1,6 +1,7 @@
 node_modules/
 build/
-public/
 dist/
+public/*
+!public/*.html
 package-lock.json
 yarn.lock
