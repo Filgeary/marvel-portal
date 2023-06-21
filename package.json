@@ -1,0 +1,53 @@
+{
+  "name": "cra-react18",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.8"
+  },
+  "resolutions": {
+    "//": "https://github.com/babel/babel/issues/15655",
+    "@babel/core": "^7.22.1",
+    "@babel/preset-env": "7.22.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "codegen": "node .codegen $1",
+    "format": "prettier . --write",
+    "lint:prettier": "prettier . --check",
+    "lint:eslint": "eslint \"**/**.{js,ts,jsx,tsx}\" --max-warnings 0",
+    "lint": "yarn run lint:prettier && yarn run lint:eslint"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not IE 11",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
