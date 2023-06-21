@@ -82,9 +82,13 @@ select {
 /* =================================================== */
 
 :root {
-  --cra-accent-color: tomato;
-  --cra-font-dark: #404040;
+  --cra-accent-color: hsl(358, 84%, 52%);
+  --cra-accent-secondary-color: dodgerblue;
+  --cra-accent-color-dark: hsl(353, 100%, 31%);
+  --cra-font-dark: hsl(0, 0%, 25%);
   --cra-font-light: white;
+  --cra-bg-dark: hsl(0, 0%, 14%);
+  --cra-bg-grey: hsl(0, 0%, 36%);
 }
 
 /* Base */
@@ -94,7 +98,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
+  padding: 0;
 
   font-size: 18px;
   line-height: 1.5;
@@ -103,7 +107,7 @@ body {
   font-family: system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--cra-accent-color);
+  color: var(--cra-font-dark);
 }
 
 img {
@@ -129,6 +133,64 @@ input[type='radio'].visually-hidden {
   overflow: hidden;
 }
 
+.btn {
+  padding: 8px 24px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  border: none;
+
+  cursor: pointer;
+}
+.btn:hover,
+.btn:focus,
+.btn:active {
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  color: var(--cra-font-light);
+  background: var(--cra-accent-color);
+}
+
+.btn-secondary {
+  color: var(--cra-font-light);
+  background: var(--cra-bg-grey);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+  border-left: 4px solid tomato;
+  border-right: 4px solid tomato;
+}
+
+/* Utils */
+/* =================================================== */
+
+.d-block {
+  display: block !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+/* Custom fonts */
+/* =================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'DynaPuff', cursive;
+  font-weight: 400;
+}
+
 /* Media Queries / Desktop-first */
 /* =================================================== */
 
@@ -138,10 +200,16 @@ input[type='radio'].visually-hidden {
 
 @media (max-width: 1023px) {
   /* tablet (<= 1023) */
+  .container {
+    max-width: 1023px;
+  }
 }
 
 @media (max-width: 767px) {
   /* mobile -> tablet (<= 767) */
+  .container {
+    max-width: 767px;
+  }
   body {
     font-size: 16px;
   }
