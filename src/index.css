@@ -133,6 +133,17 @@ input[type='radio'].visually-hidden {
   overflow: hidden;
 }
 
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
 .btn {
   padding: 8px 24px;
   text-align: center;
@@ -163,8 +174,12 @@ input[type='radio'].visually-hidden {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 5vw, 3rem);
-  border-left: 4px solid tomato;
-  border-right: 4px solid tomato;
+  /* border-left: 4px solid tomato; */
+  /* border-right: 4px solid tomato; */
+}
+
+section {
+  padding: 5vh 0px 1rem;
 }
 
 /* Utils */
@@ -178,6 +193,41 @@ input[type='radio'].visually-hidden {
   width: 100% !important;
 }
 
+.d-flex {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.gap-0 {
+  gap: 0px !important;
+}
+.gap-1 {
+  gap: 0.5rem !important;
+}
+.gap-2 {
+  gap: 1rem !important;
+}
+.gap-3 {
+  gap: 1.5rem !important;
+}
+.gap-4 {
+  gap: 2rem !important;
+}
+
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.mb-1 {
+  margin-bottom: 0.5rem !important;
+}
+.mb-2 {
+  margin-bottom: 1rem !important;
+}
+
 /* Custom fonts */
 /* =================================================== */
 
@@ -189,6 +239,7 @@ h5,
 h6 {
   font-family: 'DynaPuff', cursive;
   font-weight: 400;
+  line-height: 1.2;
 }
 
 /* Media Queries / Desktop-first */

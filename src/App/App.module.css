@@ -1,5 +1,5 @@
-.heading {
-  color: dodgerblue;
+.wrapper {
+  display: grid;
 }
 
 @media (max-width: 1199px) {

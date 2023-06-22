@@ -1,0 +1,38 @@
+.header {
+  padding: 4px 0;
+  background: var(--cra-accent-color);
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleLink {
+  font-size: 120%;
+  color: var(--cra-font-light);
+}
+
+.link {
+  font-family: 'DynaPuff', cursive;
+  font-size: larger;
+  color: var(--cra-bg-dark);
+}
+
+@media (max-width: 1199px) {
+  /* desktop (<= 1199) */
+}
+
+@media (max-width: 1023px) {
+  /* tablet (<= 1023) */
+}
+
+@media (max-width: 767px) {
+  /* mobile -> tablet (<= 767) */
+}
+
+@media (max-width: 425px) {
+  /* only mobile (<= 425) */
+}
