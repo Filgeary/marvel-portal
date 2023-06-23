@@ -146,15 +146,17 @@ a {
   text-decoration: none;
 }
 
+button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
 .btn {
   padding: 8px 24px;
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
-  border: none;
   clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
-
-  cursor: pointer;
 }
 .btn:hover,
 .btn:focus,
@@ -181,12 +183,18 @@ a {
   /* border-right: 4px solid tomato; */
 }
 
-section {
-  padding: 5vh 0px 1rem;
+section,
+article {
+  padding: 1.5rem;
+  padding-left: 2rem;
 }
 
 /* Utils */
 /* =================================================== */
+
+.text-center {
+  text-align: center !important;
+}
 
 .d-block {
   display: block !important;
@@ -232,6 +240,9 @@ section {
 }
 .gap-4 {
   gap: 2rem !important;
+}
+.gap-5 {
+  gap: 4rem !important;
 }
 
 /* Padding */
