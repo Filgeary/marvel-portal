@@ -1,5 +1,6 @@
 import React from 'react'
 import AppHeader from '../components/AppHeader'
+import RandomChar from '../components/RandomChar'
 import styles from './App.module.css'
 
 const App = () => {
@@ -7,15 +8,8 @@ const App = () => {
     <div className={styles.wrapper}>
       <AppHeader />
 
-      <main style={{ background: '#ddd' }}>
-        <div className='container'>
-          <section>
-            <h2>Main Content</h2>
-            <h3>HULK</h3>
-            <h3>CALYPSO</h3>
-            <h3>LOKI</h3>
-          </section>
-        </div>
+      <main style={{ padding: '40px 0', background: '#ddd' }}>
+        <RandomChar />
       </main>
 
       <footer style={{ color: 'var(--cra-font-light)', background: 'var(--cra-bg-dark)' }}>

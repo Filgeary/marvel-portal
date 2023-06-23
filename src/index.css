@@ -89,6 +89,7 @@ select {
   --cra-font-light: white;
   --cra-bg-dark: hsl(0, 0%, 14%);
   --cra-bg-grey: hsl(0, 0%, 36%);
+  --cra-bg-light: white;
 }
 
 /* Base */
@@ -100,7 +101,7 @@ body {
   margin: 0;
   padding: 0;
 
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
   font-style: normal;
@@ -114,6 +115,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 /* helper class */
@@ -150,6 +152,7 @@ a {
   text-transform: uppercase;
   vertical-align: middle;
   border: none;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
 
   cursor: pointer;
 }
@@ -198,10 +201,23 @@ section {
   flex-wrap: wrap !important;
 }
 
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.d-grid {
+  display: grid !important;
+}
+
 .align-items-center {
   align-items: center !important;
 }
 
+.justify-content-space-between {
+  justify-content: space-between !important;
+}
+
+/* Gap */
 .gap-0 {
   gap: 0px !important;
 }
@@ -218,6 +234,41 @@ section {
   gap: 2rem !important;
 }
 
+/* Padding */
+.p-0 {
+  padding: 0 !important;
+}
+.p-1 {
+  padding: 1rem !important;
+}
+.p-2 {
+  padding: 1.5rem !important;
+}
+.p-3 {
+  padding: 2rem !important;
+}
+
+/* Padding-left */
+.pl-0 {
+  padding-left: 0 !important;
+}
+.pl-1 {
+  padding-left: 1rem !important;
+}
+.pl-2 {
+  padding-left: 1.5rem !important;
+}
+.pl-3 {
+  padding-left: 2rem !important;
+}
+
+/* Margin */
+.m-0 {
+  margin: 0 !important;
+}
+.m-auto {
+  margin: auto !important;
+}
 .mb-0 {
   margin-bottom: 0 !important;
 }
@@ -242,30 +293,38 @@ h6 {
   line-height: 1.2;
 }
 
+a,
+.btn {
+  font-family: 'DynaPuff', cursive;
+}
+
 /* Media Queries / Desktop-first */
 /* =================================================== */
 
 @media (max-width: 1199px) {
   /* desktop (<= 1199) */
+  .container {
+    max-width: 1090px;
+  }
 }
 
 @media (max-width: 1023px) {
   /* tablet (<= 1023) */
   .container {
-    max-width: 1023px;
+    max-width: 923px;
   }
 }
 
 @media (max-width: 767px) {
   /* mobile -> tablet (<= 767) */
   .container {
-    max-width: 767px;
-  }
-  body {
-    font-size: 16px;
+    max-width: 717px;
   }
 }
 
 @media (max-width: 425px) {
   /* only mobile (<= 425) */
+  .container {
+    max-width: 400px;
+  }
 }
