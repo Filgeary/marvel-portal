@@ -1,5 +1,6 @@
 import cn from 'clsx'
 import React from 'react'
+import AppFooter from '../components/AppFooter'
 import AppHeader from '../components/AppHeader'
 import CharInfo from '../components/CharInfo'
 import CharList from '../components/CharList'
@@ -23,15 +24,7 @@ const App = () => {
         </div>
       </main>
 
-      <footer style={{ color: 'var(--cra-font-light)', background: 'var(--cra-bg-dark)' }}>
-        <div className='container'>
-          <section className='pl-0'>
-            <h2 className='mb-2'>Project Info</h2>
-            <p>Developed by Filgeary</p>
-            <p>Data provided by Marvel. © 2023 MARVEL</p>
-          </section>
-        </div>
-      </footer>
+      <AppFooter />
     </div>
   )
 }
