@@ -1,6 +1,7 @@
 import cn from 'clsx'
 import React from 'react'
 import AppHeader from '../components/AppHeader'
+import CharInfo from '../components/CharInfo'
 import CharList from '../components/CharList'
 import RandomChar from '../components/RandomChar'
 import styles from './App.module.css'
@@ -18,9 +19,7 @@ const App = () => {
 
         <div className={cn('container', styles.charListWrapper)}>
           <CharList />
-          <section style={{ background: 'var(--cra-bg-light)', position: 'sticky', top: '1.5rem' }}>
-            <h2 className='text-center'>Char Info</h2>
-          </section>
+          <CharInfo />
         </div>
       </main>
 

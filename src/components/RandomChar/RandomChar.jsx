@@ -49,7 +49,7 @@ const RandomChar = () => {
           <h3 className='mb-2'>Or choose another one</h3>
           <button
             type='button'
-            className='btn btn-primary'
+            className='btn btn-primary btn-shadow-light'
           >
             Try It!
           </button>

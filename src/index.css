@@ -152,16 +152,23 @@ button {
   cursor: pointer;
 }
 .btn {
+  min-width: 125px;
   padding: 8px 24px;
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
-  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+  transform: skew(-5deg);
+  transition: all 250ms;
 }
 .btn:hover,
 .btn:focus,
 .btn:active {
-  transform: scale(1.05);
+  box-shadow: 4px 4px var(--cra-bg-dark);
+}
+.btn-shadow-light:hover,
+.btn-shadow-light:focus,
+.btn-shadow-light:active {
+  box-shadow: 4px 4px var(--cra-bg-light) !important;
 }
 
 .btn-primary {
@@ -179,14 +186,11 @@ button {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 5vw, 3rem);
-  /* border-left: 4px solid tomato; */
-  /* border-right: 4px solid tomato; */
 }
 
 section,
 article {
   padding: 1.5rem;
-  padding-left: 2rem;
 }
 
 /* Utils */
@@ -194,6 +198,10 @@ article {
 
 .text-center {
   text-align: center !important;
+}
+
+.text-upper {
+  text-transform: uppercase !important;
 }
 
 .d-block {
@@ -209,16 +217,32 @@ article {
   flex-wrap: wrap !important;
 }
 
+.flex-column {
+  flex-direction: column !important;
+}
+
 .flex-grow-1 {
-  flex-grow: 1;
+  flex-grow: 1 !important;
 }
 
 .d-grid {
   display: grid !important;
 }
 
+.align-items-start {
+  align-items: start !important;
+}
+
 .align-items-center {
   align-items: center !important;
+}
+
+.align-self-start {
+  align-self: start !important;
+}
+
+.align-self-end {
+  align-self: end !important;
 }
 
 .justify-content-space-between {

@@ -1,0 +1,37 @@
+.article {
+  display: grid;
+  align-items: start;
+  gap: 1.5rem;
+  background: var(--cra-bg-light);
+  position: sticky;
+  top: 1.5rem;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 1.5rem;
+}
+
+.figureCharAvatar {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 150px;
+  min-height: 150px;
+}
+
+@media (max-width: 1199px) {
+  /* desktop (<= 1199) */
+}
+
+@media (max-width: 1023px) {
+  /* tablet (<= 1023) */
+}
+
+@media (max-width: 767px) {
+  /* mobile -> tablet (<= 767) */
+}
+
+@media (max-width: 425px) {
+  /* only mobile (<= 425) */
+}
