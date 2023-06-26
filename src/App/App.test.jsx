@@ -4,10 +4,13 @@ import React from 'react'
 import App from './App'
 
 describe('App', () => {
-  it('should render heading', () => {
+  it('should render properly all components', () => {
     render(<App />)
 
-    const heading = screen.getByRole('heading', { name: /marvel portal/i })
-    expect(heading).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /marvel portal/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /random-char/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /characters list/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /char info/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /project info/i })).toBeInTheDocument()
   })
 })
