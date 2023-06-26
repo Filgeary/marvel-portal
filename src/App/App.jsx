@@ -5,7 +5,19 @@ import AppHeader from '../components/AppHeader'
 import CharInfo from '../components/CharInfo'
 import CharList from '../components/CharList'
 import RandomChar from '../components/RandomChar'
+import { marvelService } from '../services/marvelService'
 import styles from './App.module.css'
+
+// TODO: only for check
+marvelService
+  .getAllChars({ limit: 9, offset: 260 })
+  .then(res => console.table(res.data.results))
+  .catch(err => console.error(err))
+
+marvelService
+  .getCharacter(1010823)
+  .then(res => console.table(res.data.results))
+  .catch(err => console.error(err))
 
 const App = () => {
   return (
