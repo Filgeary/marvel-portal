@@ -89,6 +89,7 @@ select {
   --cra-font-light: white;
   --cra-bg-dark: hsl(0, 0%, 14%);
   --cra-bg-grey: hsl(0, 0%, 36%);
+  --cra-bg-light-grey: hsl(0, 0%, 87%);
   --cra-bg-light: white;
 }
 

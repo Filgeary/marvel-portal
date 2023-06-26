@@ -12,10 +12,7 @@ const App = () => {
     <div className={styles.wrapper}>
       <AppHeader />
 
-      <main
-        style={{ padding: '40px 0', background: '#ddd' }}
-        className='d-grid gap-5'
-      >
+      <main className={styles.main}>
         <RandomChar />
 
         <div className={cn('container', styles.charListWrapper)}>
