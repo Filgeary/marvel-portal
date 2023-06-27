@@ -2,7 +2,11 @@
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Node",
+    "resolveJsonModule": true,
     "target": "ESNext",
+    "noEmit": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "skipLibCheck": true,
@@ -12,6 +16,6 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "**/node_modules/*"]
 }

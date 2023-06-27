@@ -16,7 +16,7 @@ marvelService
 
 marvelService
   .getCharacter(1010823)
-  .then(res => console.table(res.data.results))
+  .then(res => console.table(res.data?.results))
   .catch(err => console.error(err))
 
 const App = () => {
