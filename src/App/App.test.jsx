@@ -1,13 +1,16 @@
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+// import userEvent from '@testing-library/user-event'
 import React from 'react'
 import App from './App'
 
 describe('App', () => {
-  it('should render Heading & click on button', () => {
+  it('should render properly all components', () => {
     render(<App />)
 
-    expect(screen.getByRole('heading', { name: /app-component/i })).toBeInTheDocument()
-    userEvent.click(screen.getByRole('button', { name: /app-button/i }))
+    expect(screen.getByRole('heading', { name: /marvel portal/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /random-char/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /characters list/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /char info/i })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /project info/i })).toBeInTheDocument()
   })
 })

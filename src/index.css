@@ -82,9 +82,15 @@ select {
 /* =================================================== */
 
 :root {
-  --cra-accent-color: tomato;
-  --cra-font-dark: #404040;
+  --cra-accent-color: hsl(358, 84%, 52%);
+  --cra-accent-secondary-color: dodgerblue;
+  --cra-accent-color-dark: hsl(353, 100%, 31%);
+  --cra-font-dark: hsl(0, 0%, 25%);
   --cra-font-light: white;
+  --cra-bg-dark: hsl(0, 0%, 14%);
+  --cra-bg-grey: hsl(0, 0%, 36%);
+  --cra-bg-light-grey: hsl(0, 0%, 87%);
+  --cra-bg-light: white;
 }
 
 /* Base */
@@ -94,22 +100,23 @@ body {
   min-width: 320px;
   min-height: 100vh;
   margin: 0;
-  padding: 5vh clamp(1rem, 5vw, 3rem) 1rem;
+  padding: 0;
 
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   font-weight: 400;
   font-style: normal;
   font-family: system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: var(--cra-accent-color);
+  color: var(--cra-font-dark);
 }
 
 img {
   display: block;
   max-width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 /* helper class */
@@ -129,24 +136,231 @@ input[type='radio'].visually-hidden {
   overflow: hidden;
 }
 
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+.btn {
+  min-width: 125px;
+  padding: 8px 24px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  transform: skew(-5deg);
+  transition: all 250ms;
+}
+.btn:hover,
+.btn:focus,
+.btn:active {
+  box-shadow: 4px 4px var(--cra-bg-dark);
+}
+.btn-shadow-light:hover,
+.btn-shadow-light:focus,
+.btn-shadow-light:active {
+  box-shadow: 4px 4px var(--cra-bg-light) !important;
+}
+
+.btn-primary {
+  color: var(--cra-font-light);
+  background: var(--cra-accent-color);
+}
+
+.btn-secondary {
+  color: var(--cra-font-light);
+  background: var(--cra-bg-grey);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 5vw, 3rem);
+}
+
+section,
+article {
+  padding: 1.5rem;
+}
+
+/* Utils */
+/* =================================================== */
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-upper {
+  text-transform: uppercase !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.d-flex {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.flex-grow-1 {
+  flex-grow: 1 !important;
+}
+
+.d-grid {
+  display: grid !important;
+}
+
+.align-items-start {
+  align-items: start !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.align-self-start {
+  align-self: start !important;
+}
+
+.align-self-end {
+  align-self: end !important;
+}
+
+.justify-content-space-between {
+  justify-content: space-between !important;
+}
+
+/* Gap */
+.gap-0 {
+  gap: 0px !important;
+}
+.gap-1 {
+  gap: 0.5rem !important;
+}
+.gap-2 {
+  gap: 1rem !important;
+}
+.gap-3 {
+  gap: 1.5rem !important;
+}
+.gap-4 {
+  gap: 2rem !important;
+}
+.gap-5 {
+  gap: 4rem !important;
+}
+
+/* Padding */
+.p-0 {
+  padding: 0 !important;
+}
+.p-1 {
+  padding: 1rem !important;
+}
+.p-2 {
+  padding: 1.5rem !important;
+}
+.p-3 {
+  padding: 2rem !important;
+}
+
+/* Padding-left */
+.pl-0 {
+  padding-left: 0 !important;
+}
+.pl-1 {
+  padding-left: 1rem !important;
+}
+.pl-2 {
+  padding-left: 1.5rem !important;
+}
+.pl-3 {
+  padding-left: 2rem !important;
+}
+
+/* Margin */
+.m-0 {
+  margin: 0 !important;
+}
+.m-auto {
+  margin: auto !important;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+.mb-1 {
+  margin-bottom: 0.5rem !important;
+}
+.mb-2 {
+  margin-bottom: 1rem !important;
+}
+
+/* Custom fonts */
+/* =================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'DynaPuff', cursive;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+a,
+.btn {
+  font-family: 'DynaPuff', cursive;
+}
+
 /* Media Queries / Desktop-first */
 /* =================================================== */
 
 @media (max-width: 1199px) {
   /* desktop (<= 1199) */
+  .container {
+    max-width: 1090px;
+  }
 }
 
 @media (max-width: 1023px) {
   /* tablet (<= 1023) */
+  .container {
+    max-width: 923px;
+  }
 }
 
 @media (max-width: 767px) {
   /* mobile -> tablet (<= 767) */
-  body {
-    font-size: 16px;
+  .container {
+    max-width: 717px;
   }
 }
 
 @media (max-width: 425px) {
   /* only mobile (<= 425) */
+  .container {
+    max-width: 400px;
+  }
 }
