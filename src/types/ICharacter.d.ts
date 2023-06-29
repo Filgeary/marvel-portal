@@ -1,22 +1,22 @@
-export interface ICharacter {
+export interface ICharacterDataWrapper {
   code: number
   status: string
   copyright: string
   attributionText: string
   attributionHTML: string
-  data: Data
+  data: ICharacterData
   etag: string
 }
 
-interface Data {
+interface ICharacterData {
   offset: number
   limit: number
   total: number
   count: number
-  results: Result[]
+  results: ICharacter[]
 }
 
-interface Result {
+interface ICharacter {
   id: number
   name: string
   description: string
@@ -24,10 +24,10 @@ interface Result {
   resourceURI: string
   urls: Url[]
   thumbnail: Thumbnail
-  comics: Comics
-  stories: Stories
-  events: Events
-  series: Series
+  comics: ComicList
+  stories: StoryList
+  events: EventList
+  series: SeriesList
 }
 
 interface Url {
@@ -40,51 +40,51 @@ interface Thumbnail {
   extension: string
 }
 
-interface Comics {
+interface ComicList {
   available: number
   returned: number
   collectionURI: string
-  items: ComicsItem[]
+  items: ComicSummary[]
 }
 
-interface ComicsItem {
+interface ComicSummary {
   resourceURI: string
   name: string
 }
 
-interface Stories {
+interface StoryList {
   available: number
   returned: number
   collectionURI: string
-  items: StoriesItem[]
+  items: StorySummary[]
 }
 
-interface StoriesItem {
+interface StorySummary {
   resourceURI: string
   name: string
   type: string
 }
 
-interface Events {
+interface EventList {
   available: number
   returned: number
   collectionURI: string
-  items: EventsItem[]
+  items: EventSummary[]
 }
 
-interface EventsItem {
+interface EventSummary {
   resourceURI: string
   name: string
 }
 
-interface Series {
+interface SeriesList {
   available: number
   returned: number
   collectionURI: string
-  items: SeriesItem[]
+  items: SeriesSummary[]
 }
 
-interface SeriesItem {
+interface SeriesSummary {
   resourceURI: string
   name: string
 }

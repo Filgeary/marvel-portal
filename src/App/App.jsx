@@ -11,7 +11,7 @@ import styles from './App.module.css'
 // TODO: only for check
 marvelService
   .getAllChars({ limit: 9, offset: 260 })
-  .then(res => console.table(res.data.results))
+  .then(res => console.table(res.data?.results))
   .catch(err => console.error(err))
 
 marvelService
