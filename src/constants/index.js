@@ -1,0 +1,1 @@
+export const API_TOTAL_CHARACTERS = 1562
