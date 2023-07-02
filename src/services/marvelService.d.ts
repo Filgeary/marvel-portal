@@ -1,6 +1,5 @@
-import type { ICharacterDataWrapper } from '../types/ICharacter'
+import type { TCharacterDataWrapper } from '../types/TCharacter'
 
-type TCharacterDataWrapper = Partial<ICharacterDataWrapper>
 type Params = Partial<{
   name: string
   nameStartsWith: string

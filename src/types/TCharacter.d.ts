@@ -1,22 +1,22 @@
-export interface ICharacterDataWrapper {
+export type TCharacterDataWrapper = Partial<{
   code: number
   status: string
   copyright: string
   attributionText: string
   attributionHTML: string
-  data: ICharacterData
+  data: TCharacterData
   etag: string
-}
+}>
 
-interface ICharacterData {
+type TCharacterData = Partial<{
   offset: number
   limit: number
   total: number
   count: number
-  results: ICharacter[]
-}
+  results: TCharacter[]
+}>
 
-interface ICharacter {
+export type TCharacter = Partial<{
   id: number
   name: string
   description: string
@@ -28,63 +28,63 @@ interface ICharacter {
   stories: StoryList
   events: EventList
   series: SeriesList
-}
+}>
 
-interface Url {
-  type: string
+type Url = Partial<{
+  type: 'detail' | 'wiki' | 'comiclink'
   url: string
-}
+}>
 
-interface Thumbnail {
+type Thumbnail = Partial<{
   path: string
   extension: string
-}
+}>
 
-interface ComicList {
+type ComicList = Partial<{
   available: number
   returned: number
   collectionURI: string
   items: ComicSummary[]
-}
+}>
 
-interface ComicSummary {
+type ComicSummary = Partial<{
   resourceURI: string
   name: string
-}
+}>
 
-interface StoryList {
+type StoryList = Partial<{
   available: number
   returned: number
   collectionURI: string
   items: StorySummary[]
-}
+}>
 
-interface StorySummary {
+type StorySummary = Partial<{
   resourceURI: string
   name: string
   type: string
-}
+}>
 
-interface EventList {
+type EventList = Partial<{
   available: number
   returned: number
   collectionURI: string
   items: EventSummary[]
-}
+}>
 
-interface EventSummary {
+type EventSummary = Partial<{
   resourceURI: string
   name: string
-}
+}>
 
-interface SeriesList {
+type SeriesList = Partial<{
   available: number
   returned: number
   collectionURI: string
   items: SeriesSummary[]
-}
+}>
 
-interface SeriesSummary {
+type SeriesSummary = Partial<{
   resourceURI: string
   name: string
-}
+}>

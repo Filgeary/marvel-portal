@@ -6,17 +6,18 @@ import CharInfo from '../components/CharInfo'
 import CharList from '../components/CharList'
 import RandomChar from '../components/RandomChar'
 import { marvelService } from '../services/marvelService'
+import { transformCharacter } from '../utils/apiAdapter'
 import styles from './App.module.css'
 
-// TODO: only for check
+// TODO: remove later api examples
 marvelService
-  .getAllChars({ limit: 9, offset: 260 })
-  .then(res => console.table(res.data?.results))
+  .getAllChars({ limit: 18, offset: 560 })
+  .then(res => console.table(res.data?.results?.map(transformCharacter)))
   .catch(err => console.error(err))
 
 marvelService
-  .getCharacter(1010823)
-  .then(res => console.table(res.data?.results))
+  .getCharacter(1011299)
+  .then(res => console.table(res.data?.results?.map(transformCharacter)))
   .catch(err => console.error(err))
 
 const App = () => {
