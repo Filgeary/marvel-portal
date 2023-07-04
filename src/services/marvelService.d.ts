@@ -1,4 +1,4 @@
-import type { TCharacterDataWrapper } from '../types/TCharacter'
+import type { ICharacterDataWrapper } from '../types/ICharacter'
 
 type Params = Partial<{
   name: string
@@ -14,6 +14,6 @@ type Params = Partial<{
 }>
 
 export declare const marvelService: {
-  getAllChars: (params?: Params) => Promise<TCharacterDataWrapper>
-  getCharacter: (id: number) => Promise<TCharacterDataWrapper>
+  getAllChars: (params?: Params) => Promise<ICharacterDataWrapper>
+  getCharacter: (id: number) => Promise<ICharacterDataWrapper>
 }

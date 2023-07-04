@@ -1,5 +1,5 @@
 /**
- * @param {import('../types/TCharacter').TCharacter | undefined} char
+ * @param {import('../types/ICharacter').ICharacter | undefined} char
  */
 export const transformCharacter = char => {
   if (!char) return
