@@ -1,41 +1,52 @@
 import cn from 'clsx'
 import React from 'react'
+import { IMAGE_VARIANT } from '../../constants'
+import { transformCharacter } from '../../utils/apiAdapter'
 import styles from './RandomChar.module.css'
 
-const RandomChar = () => {
+/**
+ * @param {object} props
+ * @param {import('../../types/ICharacter').ICharacter | null | undefined} props.char
+ */
+const RandomChar = ({ char }) => {
+  const { id, name, description, thumbnail, externalLinks } =
+    transformCharacter(char, IMAGE_VARIANT) ?? {}
+
   return (
     <div className={cn('container', styles.wrapper)}>
       <section className={styles.charSection}>
-        <figure className='d-flex'>
+        <figure className='relative'>
           <img
-            src='https://images.placeholders.dev/?width=270&height=270&bgColor=%231e90ff'
-            alt='Random Char'
-            style={{ maxHeight: '270px' }}
-            className='flex-grow-1'
+            src={thumbnail}
+            alt={name}
+            width={250}
+            height={250}
           />
+          <small className='absolute top-0 right-0'>{id}</small>
         </figure>
 
-        <div className='d-grid gap-2 p-2 pl-3'>
-          <h2 className={styles.charTitle}>Random-Char</h2>
-          <p>
-            As the Norse God of thunder and lightning, Thor wields one of the greatest weapons ever
-            made, the enchanted hammer Mjolnir. While others have described Thor as an over-muscled,
-            oafish imbecile, he's quite...
-          </p>
+        <div className='d-flex flex-column flex-grow-1 w-60 justify-space-between gap-1 p-2'>
+          <h2
+            data-testid='randomCharTitle'
+            className={styles.charTitle}
+          >
+            {name}
+          </h2>
+          <p>{description}</p>
 
-          <div className='d-flex gap-1 justify-content-space-between'>
-            <a
-              href='#charInfo'
-              className='btn btn-primary'
-            >
-              Char Info
-            </a>
-            <a
-              href='#charWiki'
-              className='btn btn-secondary'
-            >
-              Char Wiki
-            </a>
+          <div className='d-flex gap-1 justify-space-between align-items-end'>
+            {externalLinks?.map((link, idx) => {
+              return (
+                <a
+                  key={idx}
+                  href={link.url}
+                  target='_blank'
+                  rel='noreferrer noopener'
+                >
+                  {link.type?.toUpperCase() + ' ↗️'}
+                </a>
+              )
+            })}
           </div>
         </div>
       </section>

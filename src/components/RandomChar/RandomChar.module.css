@@ -4,8 +4,9 @@
 }
 
 .charSection {
-  display: grid;
-  grid-template-columns: 2fr 3fr;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   padding: 0;
   background: var(--cra-bg-light);
 }

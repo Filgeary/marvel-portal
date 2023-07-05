@@ -8,7 +8,7 @@ describe('App', () => {
     render(<App />)
 
     expect(screen.getByRole('heading', { name: /marvel portal/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /random-char/i })).toBeInTheDocument()
+    expect(screen.getByTestId('randomCharTitle')).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /characters list/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /char info/i })).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /project info/i })).toBeInTheDocument()
