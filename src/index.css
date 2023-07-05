@@ -205,12 +205,44 @@ article {
   text-transform: uppercase !important;
 }
 
+.absolute {
+  position: absolute !important;
+}
+
+.relative {
+  position: relative !important;
+}
+
+.fixed {
+  position: fixed !important;
+}
+
+.sticky {
+  position: sticky !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+.right-0 {
+  right: 0 !important;
+}
+.bottom-0 {
+  bottom: 0 !important;
+}
+.left-0 {
+  left: 0 !important;
+}
+
 .d-block {
   display: block !important;
 }
 
 .w-100 {
   width: 100% !important;
+}
+.w-60 {
+  width: 60% !important;
 }
 
 .d-flex {
@@ -238,6 +270,10 @@ article {
   align-items: center !important;
 }
 
+.align-items-end {
+  align-items: end !important;
+}
+
 .align-self-start {
   align-self: start !important;
 }
@@ -246,7 +282,7 @@ article {
   align-self: end !important;
 }
 
-.justify-content-space-between {
+.justify-space-between {
   justify-content: space-between !important;
 }
 

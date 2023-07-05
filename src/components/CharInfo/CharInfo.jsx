@@ -15,9 +15,9 @@ const CharInfo = () => {
           />
         </figure>
 
-        <div className='d-flex flex-column justify-content-space-between gap-1'>
+        <div className='d-flex flex-column justify-space-between gap-1'>
           <h2 className='text-upper'>Char Info</h2>
-          <div className='d-flex gap-1 justify-content-space-between'>
+          <div className='d-flex gap-1 justify-space-between'>
             <a
               href='#charInfo'
               className='btn btn-primary'

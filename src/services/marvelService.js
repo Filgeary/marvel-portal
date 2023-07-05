@@ -1,10 +1,9 @@
-const apiKey = process.env.REACT_APP_MARVEL_PUBLIC_KEY ?? ''
-const baseUrl = 'https://gateway.marvel.com/v1/public'
+import { BASE_MARVEL_URL, MARVEL_PUBLIC_KEY } from '../constants'
 
 const getData = async (url = '', params = {}) => {
   const searchParams = new URLSearchParams(params)
-  searchParams.append('apikey', apiKey)
-  const endpoint = baseUrl + url + '?' + searchParams.toString()
+  searchParams.append('apikey', MARVEL_PUBLIC_KEY)
+  const endpoint = BASE_MARVEL_URL + url + '?' + searchParams.toString()
 
   try {
     const res = await fetch(endpoint)
