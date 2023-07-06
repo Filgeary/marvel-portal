@@ -1,0 +1,37 @@
+.ctaSection {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem;
+  padding-left: 2rem;
+  color: var(--cra-font-light);
+  background: var(--cra-bg-dark);
+}
+
+.bgImageShield {
+  position: absolute;
+  right: -4%;
+  bottom: -4%;
+  width: 100px;
+  height: 100px;
+  background: url('../../assets/images/shield.png') no-repeat;
+}
+
+@media (max-width: 1199px) {
+  /* desktop (<= 1199) */
+}
+
+@media (max-width: 1023px) {
+  /* tablet (<= 1023) */
+}
+
+@media (max-width: 767px) {
+  /* mobile -> tablet (<= 767) */
+}
+
+@media (max-width: 425px) {
+  /* only mobile (<= 425) */
+}

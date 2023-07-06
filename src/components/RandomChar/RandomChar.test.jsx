@@ -24,14 +24,5 @@ describe('RandomChar', () => {
         /a group of cosmic adventurers brought together by star-lord, the guardians of the galaxy protect the universe from threats all across space\. the team also includes drax, gamora, groot and rocket raccoon!/i,
       ),
     ).toBeInTheDocument()
-
-    // CTA block
-    expect(
-      screen.getByRole('heading', {
-        name: /random character for today! do you wanna know them better\?/i,
-      }),
-    ).toBeInTheDocument()
-    expect(screen.getByRole('button', { name: /try it!/i })).toBeInTheDocument()
-    expect(screen.getByRole('img', { name: /captain america shield/i })).toBeInTheDocument()
   })
 })

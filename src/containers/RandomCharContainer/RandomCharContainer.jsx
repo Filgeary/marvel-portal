@@ -1,8 +1,9 @@
 import React from 'react'
+import CallToActionBox from '../../components/CallToActionBox'
 import RandomChar from '../../components/RandomChar'
 import { marvelService } from '../../services/marvelService'
 import { randomCharId } from '../../utils'
-// import styles from './RandomCharContainer.module.css'
+import styles from './RandomCharContainer.module.css'
 
 class RandomCharContainer extends React.Component {
   state = {
@@ -23,9 +24,12 @@ class RandomCharContainer extends React.Component {
     const { char } = this.state
 
     return (
-      <>
-        <RandomChar char={char} />
-      </>
+      <div className='container'>
+        <div className={styles.wrapper}>
+          <RandomChar char={char} />
+          <CallToActionBox />
+        </div>
+      </div>
     )
   }
 }
