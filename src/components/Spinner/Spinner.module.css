@@ -1,19 +1,14 @@
 .wrapper {
-  display: grid;
+  width: 100%;
+  display: flex;
 }
 
-.main {
-  display: grid;
-  gap: 4rem;
-  padding: 50px 0;
-  background: var(--cra-bg-dark);
-}
-
-.charListWrapper {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 1rem;
-  align-items: start;
+.img {
+  margin: auto;
+  width: 10vw;
+  min-width: 32px;
+  max-width: 80px;
+  height: auto;
 }
 
 @media (max-width: 1199px) {

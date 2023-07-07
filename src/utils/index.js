@@ -10,3 +10,31 @@ export const truncateStr = (str, offset) => {
   }
   return str
 }
+
+export const isJSON = text => {
+  if (typeof text !== 'string') {
+    return false
+  }
+
+  try {
+    JSON.parse(text)
+    return true
+  } catch (error) {
+    return false
+  }
+}
+
+export const validateError = err => {
+  if (err && err instanceof Error) {
+    let obj
+
+    if (isJSON(err.message)) {
+      obj = JSON.parse(err.message)
+      return obj?.message || obj?.status || 'Unknown Error!'
+    }
+
+    return err.message
+  }
+
+  return 'Unknown Error!'
+}
