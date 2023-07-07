@@ -1,21 +1,7 @@
 import { render, screen } from '@testing-library/react'
-import { rest } from 'msw'
-import { setupServer } from 'msw/node'
 // import userEvent from '@testing-library/user-event'
 import React from 'react'
-import allCharsJson from '../../__fixtures/api/allCharacters.json'
-import { BASE_MARVEL_URL } from '../../constants'
 import RandomCharContainer from './RandomCharContainer'
-
-const server = setupServer(
-  rest.get(`${BASE_MARVEL_URL}/characters`, (req, res, ctx) => {
-    return res(ctx.json(allCharsJson))
-  }),
-)
-
-beforeAll(() => server.listen())
-afterEach(() => server.resetHandlers())
-afterAll(() => server.close())
 
 describe('RandomCharContainer', () => {
   it('should fetch & render Random Character', async () => {
