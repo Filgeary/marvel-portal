@@ -9,6 +9,11 @@ const getData = async (url = '', params = {}) => {
     const res = await fetch(endpoint)
 
     if (!res.ok) {
+      if (res.status >= 400 && res.status < 599) {
+        const result = await res.json()
+        throw new Error(JSON.stringify(result))
+      }
+
       throw new Error(
         `Fetch failed\n url: ${endpoint}\n status: ${res.status}\n statusText: ${res.statusText}`,
       )
@@ -16,7 +21,7 @@ const getData = async (url = '', params = {}) => {
 
     return await res.json()
   } catch (err) {
-    console.error(err)
+    throw err
   }
 }
 

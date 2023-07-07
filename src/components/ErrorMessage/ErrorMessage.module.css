@@ -1,0 +1,28 @@
+.wrapper {
+  color: red;
+  background: white;
+}
+
+.img {
+  width: 10vw;
+  min-width: 32px;
+  max-width: 80px;
+  height: auto;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1199px) {
+  /* desktop (<= 1199) */
+}
+
+@media (max-width: 1023px) {
+  /* tablet (<= 1023) */
+}
+
+@media (max-width: 767px) {
+  /* mobile -> tablet (<= 767) */
+}
+
+@media (max-width: 425px) {
+  /* only mobile (<= 425) */
+}
