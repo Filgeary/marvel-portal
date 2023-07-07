@@ -1,11 +1,17 @@
 import cn from 'clsx'
 import React from 'react'
+import omgSticker from '../../assets/images/omg.png'
 import styles from './AppHeader.module.css'
 
 const AppHeader = () => {
   return (
     <header className={styles.header}>
       <div className={cn('container', styles.wrapper)}>
+        <img
+          src={omgSticker}
+          alt='omgSticker'
+          className={styles.omgSticker}
+        />
         <h1>
           <a
             href='#home'
