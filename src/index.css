@@ -160,16 +160,20 @@ button {
   vertical-align: middle;
   transform: skew(-5deg);
   transition: all 250ms;
+  box-shadow: 4px 4px var(--cra-bg-dark);
+}
+.btn-shadow-light {
+  box-shadow: 4px 4px var(--cra-bg-light) !important;
 }
 .btn:hover,
 .btn:focus,
 .btn:active {
-  box-shadow: 4px 4px var(--cra-bg-dark);
+  box-shadow: none;
 }
 .btn-shadow-light:hover,
 .btn-shadow-light:focus,
 .btn-shadow-light:active {
-  box-shadow: 4px 4px var(--cra-bg-light) !important;
+  box-shadow: none !important;
 }
 
 .btn-primary {
