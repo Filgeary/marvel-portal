@@ -10,7 +10,7 @@
 .charTitle {
   background: var(--cra-accent-color);
   color: var(--cra-font-light);
-  padding: 4px;
+  padding: 2px 4px;
   text-align: center;
   text-transform: uppercase;
 }

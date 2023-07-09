@@ -11,7 +11,8 @@ export const upperFirstLetter = str => {
 export const truncateStr = (str, offset) => {
   if (typeof str !== 'string') return
   if (str.length > offset) {
-    return str.slice(0, offset) + '...'
+    const lastSpaceIndex = str.slice(0, offset).lastIndexOf(' ')
+    return str.slice(0, lastSpaceIndex) + '...'
   }
   return str
 }

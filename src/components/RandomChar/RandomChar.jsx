@@ -10,7 +10,7 @@ import styles from './RandomChar.module.css'
  */
 const RandomChar = ({ char }) => {
   const { id, name, description, thumbnail, externalLinks } =
-    transformCharacter(char, IMAGE_VARIANT['250x250']) ?? {}
+    transformCharacter(char, IMAGE_VARIANT['250x250'], false) ?? {}
 
   return (
     <section className={styles.charSection}>
@@ -24,7 +24,7 @@ const RandomChar = ({ char }) => {
         <small className='absolute top-0 right-0'>{id}</small>
       </figure>
 
-      <div className='d-flex flex-column flex-grow-1 w-60 justify-space-between gap-1 p-2 pb-1'>
+      <div className='d-flex flex-column flex-grow-1 w-60 justify-space-between gap-1 p-1'>
         <h2
           data-testid='randomCharTitle'
           className={styles.charTitle}
