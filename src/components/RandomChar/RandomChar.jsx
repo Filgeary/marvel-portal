@@ -10,7 +10,7 @@ import styles from './RandomChar.module.css'
  */
 const RandomChar = ({ char }) => {
   const { id, name, description, thumbnail, externalLinks } =
-    transformCharacter(char, IMAGE_VARIANT) ?? {}
+    transformCharacter(char, IMAGE_VARIANT['250x250']) ?? {}
 
   return (
     <section className={styles.charSection}>
