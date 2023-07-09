@@ -1,7 +1,7 @@
 import React from 'react'
-import { ExternalLink } from 'react-feather'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
+import ExternalLink from '../_shared/ExternalLink'
 import styles from './RandomChar.module.css'
 
 /**
@@ -34,23 +34,13 @@ const RandomChar = ({ char }) => {
         <p>{description}</p>
 
         <div className='d-flex gap-1 justify-space-between align-items-end'>
-          {externalLinks?.map((link, idx) => {
-            const { url, type } = link
-
-            return (
-              <a
-                key={idx}
-                href={url}
-                target='_blank'
-                rel='noreferrer noopener'
-                className='link'
-              >
-                <span className='d-flex gap-03'>
-                  {type?.toUpperCase()} <ExternalLink size={20} />
-                </span>
-              </a>
-            )
-          })}
+          {externalLinks?.map(({ url, type }, idx) => (
+            <ExternalLink
+              key={idx}
+              href={url}
+              label={type}
+            />
+          ))}
         </div>
       </div>
     </section>
