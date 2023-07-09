@@ -22,7 +22,7 @@ class RandomCharContainer extends React.Component {
     this.handleUpdate()
   }
 
-  handleUpdate() {
+  handleUpdate = () => {
     this.setState({ isLoading: true })
 
     marvelService
@@ -33,7 +33,7 @@ class RandomCharContainer extends React.Component {
       .catch(err => this.handleError(err))
   }
 
-  handleError(err) {
+  handleError = err => {
     this.setState({ isLoading: false, isError: true, errorMsg: validateError(err) })
   }
 
@@ -46,7 +46,7 @@ class RandomCharContainer extends React.Component {
           {isLoading && <Spinner />}
           {isError && <ErrorMessage text={errorMsg} />}
           {!isError && !isLoading && <RandomChar char={char} />}
-          <CallToActionBox />
+          <CallToActionBox onClickActionButton={this.handleUpdate} />
         </div>
       </div>
     )
