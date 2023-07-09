@@ -433,3 +433,19 @@ a,
     max-width: 400px;
   }
 }
+
+/* Animations */
+/* =================================================== */
+
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+img[data-id='omgSticker'] {
+  animation: fadeInDown 900ms ease;
+}

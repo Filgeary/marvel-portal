@@ -8,6 +8,7 @@ const AppHeader = () => {
     <header className={styles.header}>
       <div className={cn('container', styles.wrapper)}>
         <img
+          data-id='omgSticker'
           src={omgSticker}
           alt='omgSticker'
           className={styles.omgSticker}
