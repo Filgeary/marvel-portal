@@ -43,9 +43,11 @@ class RandomCharContainer extends React.Component {
     return (
       <div className='container'>
         <div className={styles.wrapper}>
-          {isLoading && <Spinner />}
-          {isError && <ErrorMessage text={errorMsg} />}
-          {!isError && !isLoading && <RandomChar char={char} />}
+          <div style={{ minHeight: 250 }}>
+            {isLoading && <Spinner />}
+            {isError && <ErrorMessage text={errorMsg} />}
+            {!isError && !isLoading && <RandomChar char={char} />}
+          </div>
           <CallToActionBox onClickActionButton={this.handleUpdate} />
         </div>
       </div>
