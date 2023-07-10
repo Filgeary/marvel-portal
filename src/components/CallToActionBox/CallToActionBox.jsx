@@ -19,6 +19,7 @@ const CallToActionBox = ({ onClickActionButton }) => {
         </button>
       </div>
       <div
+        data-id='bgImageShield'
         className={styles.bgImageShield}
         role='img'
         aria-label='Captain America Shield'

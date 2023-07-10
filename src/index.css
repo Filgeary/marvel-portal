@@ -446,6 +446,19 @@ a,
   }
 }
 
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 img[data-id='omgSticker'] {
   animation: fadeInDown 900ms ease;
+}
+
+*[data-id='bgImageShield'] {
+  animation: rotate 8s linear infinite;
 }
