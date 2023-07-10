@@ -7,6 +7,14 @@ import CharList from '../components/CharList'
 import RandomCharContainer from '../containers/RandomCharContainer'
 import styles from './App.module.css'
 
+import allCharsResponseJSON from '../__fixtures/api/allCharacters.json'
+
+/**
+ * @type {import('../types/ICharacter').ICharacterDataWrapper}
+ */
+const allCharsResponseObj = JSON.parse(JSON.stringify(allCharsResponseJSON))
+const charList = allCharsResponseObj.data?.results
+
 const App = () => {
   return (
     <div className={styles.wrapper}>
@@ -16,7 +24,11 @@ const App = () => {
         <RandomCharContainer />
 
         <div className={cn('container', styles.charListWrapper)}>
-          <CharList />
+          <CharList
+            charList={charList}
+            onClickCharCard={uri => console.log(uri)}
+            onLoadMore={() => {}}
+          />
           <CharInfo />
         </div>
       </main>
