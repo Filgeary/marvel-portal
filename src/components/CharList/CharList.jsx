@@ -6,13 +6,21 @@ import styles from './CharList.module.css'
 /**
  * @param {object} props
  * @param {import('../../types/ICharacter').ICharacter[] | null | undefined} props.charList
- * @param {Function} props.onClickCharCard
+ * @param {Function} props.onSelectChar
  * @param {() => void} props.onLoadMore
  */
-const CharList = ({ charList, onClickCharCard, onLoadMore }) => {
+const CharList = ({ charList, onSelectChar, onLoadMore }) => {
   const transformedCharList = charList?.map(char =>
     transformCharacter(char, IMAGE_VARIANT['200x200']),
   )
+
+  if (!transformedCharList?.length) {
+    return (
+      <h2>
+        <mark className='px-05'>Characters not found!</mark>
+      </h2>
+    )
+  }
 
   return (
     <section className={styles.section}>
@@ -20,7 +28,7 @@ const CharList = ({ charList, onClickCharCard, onLoadMore }) => {
 
       <ul className={styles.list}>
         {transformedCharList?.map(char => {
-          const { id, name, thumbnail, resourceURI } = char ?? {}
+          const { id, name, thumbnail } = char ?? {}
 
           return (
             <li
@@ -30,7 +38,7 @@ const CharList = ({ charList, onClickCharCard, onLoadMore }) => {
             >
               <button
                 type='button'
-                onClick={() => onClickCharCard(resourceURI)}
+                onClick={() => onSelectChar(id)}
               >
                 <img
                   data-testid='charListItemImage'
