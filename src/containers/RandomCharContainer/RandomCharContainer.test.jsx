@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-// import userEvent from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event'
 import { rest } from 'msw'
 import React from 'react'
 import { BASE_MARVEL_URL } from '../../constants'
@@ -87,7 +87,7 @@ describe('RandomCharContainer', () => {
     await screen.findByRole('heading', { name: /guardians of the galaxy/i })
 
     // update character via click
-    screen.getByRole('button', { name: /try it!/i }).click()
+    userEvent.click(screen.getByRole('button', { name: /try it!/i }))
     await screen.findByTestId('spinner')
     await screen.findByRole('heading', { name: /guardians of the galaxy/i })
     expect(screen.queryByTestId('errorMessage')).not.toBeInTheDocument()
