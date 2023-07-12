@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './CallToActionBox.module.css'
 
-const CallToActionBox = () => {
+const CallToActionBox = ({ onClickActionButton }) => {
   return (
     <section className={styles.ctaSection}>
       <h2>
@@ -13,11 +13,13 @@ const CallToActionBox = () => {
         <button
           type='button'
           className='btn btn-primary btn-shadow-light'
+          onClick={onClickActionButton}
         >
           Try It!
         </button>
       </div>
       <div
+        data-id='bgImageShield'
         className={styles.bgImageShield}
         role='img'
         aria-label='Captain America Shield'

@@ -1,12 +1,17 @@
-.wrapper {
-  display: grid;
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+
+  color: var(--cra-link);
+  text-decoration: underline dashed;
+  text-underline-offset: 0.4rem;
 }
 
-.main {
-  display: grid;
-  gap: 4rem;
-  padding: 50px 0;
-  background: var(--cra-bg-dark);
+.link:hover,
+.link:focus,
+.link:active {
+  color: var(--cra-font-dark);
 }
 
 @media (max-width: 1199px) {

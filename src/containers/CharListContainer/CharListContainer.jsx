@@ -1,18 +1,18 @@
 import React from 'react'
-import CallToActionBox from '../../components/CallToActionBox'
-import RandomChar from '../../components/RandomChar'
+import CharInfo from '../../components/CharInfo'
+import CharList from '../../components/CharList'
 import ErrorMessage from '../../components/_shared/ErrorMessage'
 import Spinner from '../../components/_shared/Spinner'
 import { marvelService } from '../../services/marvelService'
-import { randomCharId, validateError } from '../../utils'
-import styles from './RandomCharContainer.module.css'
+import { validateError } from '../../utils'
+import styles from './CharListContainer.module.css'
 
-class RandomCharContainer extends React.Component {
+class CharListContainer extends React.Component {
   state = {
     /**
-     * @type {import('../../types/ICharacter').ICharacter | null}
+     * @type {import('../../types/ICharacter').ICharacter[] | null}
      */
-    char: null,
+    charList: null,
     isLoading: false,
     isError: false,
     errorMsg: '',
@@ -26,9 +26,9 @@ class RandomCharContainer extends React.Component {
     this.setState({ isLoading: true })
 
     marvelService
-      .getAllChars({ limit: 1, offset: randomCharId() })
+      .getAllChars({ limit: 18 })
       .then(res => {
-        this.setState({ char: res.data?.results?.at(0), isLoading: false, isError: false })
+        this.setState({ charList: res.data?.results, isLoading: false, isError: false })
       })
       .catch(err => this.handleError(err))
   }
@@ -38,7 +38,7 @@ class RandomCharContainer extends React.Component {
   }
 
   render() {
-    const { char, isLoading, isError, errorMsg } = this.state
+    const { charList, isLoading, isError, errorMsg } = this.state
 
     return (
       <div className='container'>
@@ -46,13 +46,20 @@ class RandomCharContainer extends React.Component {
           <div style={{ minHeight: 250 }}>
             {isLoading && <Spinner />}
             {isError && <ErrorMessage text={errorMsg} />}
-            {!isError && !isLoading && <RandomChar char={char} />}
+            {!isError && !isLoading && (
+              <CharList
+                charList={charList}
+                onSelectChar={id => console.log(id)}
+                onLoadMore={() => {}}
+              />
+            )}
           </div>
-          <CallToActionBox onClickActionButton={this.handleUpdate} />
+
+          <CharInfo />
         </div>
       </div>
     )
   }
 }
 
-export default RandomCharContainer
+export default CharListContainer

@@ -1,6 +1,7 @@
 import React from 'react'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
+import ExternalLink from '../_shared/ExternalLink'
 import styles from './RandomChar.module.css'
 
 /**
@@ -9,7 +10,7 @@ import styles from './RandomChar.module.css'
  */
 const RandomChar = ({ char }) => {
   const { id, name, description, thumbnail, externalLinks } =
-    transformCharacter(char, IMAGE_VARIANT) ?? {}
+    transformCharacter(char, IMAGE_VARIANT['250x250'], false) ?? {}
 
   return (
     <section className={styles.charSection}>
@@ -23,7 +24,7 @@ const RandomChar = ({ char }) => {
         <small className='absolute top-0 right-0'>{id}</small>
       </figure>
 
-      <div className='d-flex flex-column flex-grow-1 w-60 justify-space-between gap-1 p-2'>
+      <div className='d-flex flex-column flex-grow-1 w-60 justify-space-between gap-1 p-1'>
         <h2
           data-testid='randomCharTitle'
           className={styles.charTitle}
@@ -33,18 +34,13 @@ const RandomChar = ({ char }) => {
         <p>{description}</p>
 
         <div className='d-flex gap-1 justify-space-between align-items-end'>
-          {externalLinks?.map((link, idx) => {
-            return (
-              <a
-                key={idx}
-                href={link.url}
-                target='_blank'
-                rel='noreferrer noopener'
-              >
-                {link.type?.toUpperCase() + ' ↗️'}
-              </a>
-            )
-          })}
+          {externalLinks?.map(({ url, type }, idx) => (
+            <ExternalLink
+              key={idx}
+              href={url}
+              label={type}
+            />
+          ))}
         </div>
       </div>
     </section>
