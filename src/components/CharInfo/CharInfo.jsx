@@ -1,57 +1,70 @@
 import React from 'react'
+import { IMAGE_VARIANT } from '../../constants'
+import { transformCharacter } from '../../utils/apiAdapter'
+import ExternalLink from '../_shared/ExternalLink'
 import styles from './CharInfo.module.css'
 
-const CharInfo = () => {
+/**
+ * @param {object} props
+ * @param {import('../../types/ICharacter').ICharacter | null | undefined} props.char
+ */
+const CharInfo = ({ char }) => {
+  if (!char) {
+    return (
+      <h2>
+        <mark className='px-05'>No Selected Char</mark>
+      </h2>
+    )
+  }
+
+  const { name, description, thumbnail, externalLinks, comics } =
+    transformCharacter(char, IMAGE_VARIANT['200x200']) ?? {}
+
   return (
     <article className={styles.article}>
       <header className={styles.header}>
-        <figure className={styles.figureCharAvatar}>
+        <figure>
           <img
-            src='https://images.placeholders.dev/?width=150&height=150&bgColor=%231e90ff'
-            alt='CharInfo avatar'
-            width={150}
-            height={150}
-            className='flex-grow-1'
+            src={thumbnail}
+            alt={name}
+            width={200}
+            height={200}
           />
         </figure>
 
         <div className='d-flex flex-column justify-space-between gap-1'>
-          <h2 className='text-upper'>Char Info</h2>
+          <h2 className='text-upper'>{name}</h2>
           <div className='d-flex gap-1 justify-space-between'>
-            <a
-              href='#charInfo'
-              className='btn btn-primary'
-            >
-              Char Info
-            </a>
-            <a
-              href='#charWiki'
-              className='btn btn-secondary'
-            >
-              Char Wiki
-            </a>
+            {externalLinks?.map(({ url, type }, idx) => (
+              <ExternalLink
+                key={idx}
+                href={url}
+                label={type}
+              />
+            ))}
           </div>
         </div>
       </header>
 
-      {/* cspell: disable */}
-      <p data-testid='charInfo-description'>
-        In Norse mythology, Loki is a god or jötunn (or both). Loki is the son of Fárbauti and
-        Laufey, and the brother of Helblindi and Býleistr. By the jötunn Angrboða, Loki is the
-        father of Hel, the wolf Fenrir, and the world serpent Jörmungandr. By Sigyn, Loki is the
-        father of Nari and/or Narfi and with the stallion Svaðilfari as the father, Loki gave
-        birth—in the form of a mare—to the eight-legged horse Sleipnir. In addition, Loki is
-        referred to as the father of Váli in the Prose Edda.
-      </p>
-      {/* cspell: enable */}
+      <p data-testid='charInfo-description'>{description}</p>
 
-      <section className='p-0'>
-        <h3 className='mb-1'>Comics:</h3>
-        <ul>
-          <li>All-Winners Squad: Band of Heroes (2011) #3</li>
-          <li>All-Winners Squad: Band of Heroes (2011) #3</li>
-          <li>All-Winners Squad: Band of Heroes (2011) #3</li>
-        </ul>
+      <section className='p-0 d-flex flex-column gap-1'>
+        <div className='d-flex justify-space-between align-items-center gap-1'>
+          <h3>Comics:</h3>
+          {comics?.items?.length ? (
+            <small>{`Shown ${comics?.returned} from ${comics?.available}`}</small>
+          ) : null}
+        </div>
+
+        {comics?.items?.length ? (
+          <ul>
+            {comics?.items?.map(({ name, resourceURI }) => (
+              <li key={resourceURI}>{name}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>No Comics</p>
+        )}
       </section>
     </article>
   )
