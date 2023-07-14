@@ -59,7 +59,12 @@ const CharInfo = ({ char }) => {
         {comics?.items?.length ? (
           <ul>
             {comics?.items?.map(({ name, resourceURI }) => (
-              <li key={resourceURI}>{name}</li>
+              <li
+                data-testid='charInfo-listItemComic'
+                key={resourceURI}
+              >
+                {name}
+              </li>
             ))}
           </ul>
         ) : (
