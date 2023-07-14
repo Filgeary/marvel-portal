@@ -33,7 +33,12 @@ const CharInfo = ({ char }) => {
         </figure>
 
         <div className='d-flex flex-column justify-space-between gap-1'>
-          <h2 className='text-upper'>{name}</h2>
+          <h2
+            data-testid='charInfo-charTitle'
+            className='text-upper'
+          >
+            {name}
+          </h2>
           <div className='d-flex gap-1 justify-space-between'>
             {externalLinks?.map(({ url, type }, idx) => (
               <ExternalLink
