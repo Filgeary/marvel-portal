@@ -13,6 +13,10 @@ class CharListContainer extends React.Component {
      * @type {import('../../types/ICharacter').ICharacter[] | null}
      */
     charList: null,
+    /**
+     * @type {import('../../types/ICharacter').ICharacter | null}
+     */
+    selectedChar: null,
     isLoading: false,
     isError: false,
     errorMsg: '',
@@ -37,8 +41,13 @@ class CharListContainer extends React.Component {
     this.setState({ isLoading: false, isError: true, errorMsg: validateError(err) })
   }
 
+  handleSelectChar = id => {
+    const selectedChar = this.state.charList?.find(char => char.id === id)
+    this.setState({ selectedChar })
+  }
+
   render() {
-    const { charList, isLoading, isError, errorMsg } = this.state
+    const { charList, isLoading, isError, errorMsg, selectedChar } = this.state
 
     return (
       <div className='container'>
@@ -49,13 +58,13 @@ class CharListContainer extends React.Component {
             {!isError && !isLoading && (
               <CharList
                 charList={charList}
-                onSelectChar={id => console.log(id)}
-                onLoadMore={() => {}}
+                onSelectChar={id => this.handleSelectChar(id)}
+                onLoadMore={() => {}} // TODO: add handler
               />
             )}
           </div>
 
-          <CharInfo />
+          <CharInfo char={selectedChar} />
         </div>
       </div>
     )

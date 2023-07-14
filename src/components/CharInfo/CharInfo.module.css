@@ -13,13 +13,6 @@
   gap: 1.5rem;
 }
 
-.figureCharAvatar {
-  display: flex;
-  flex-wrap: wrap;
-  min-width: 150px;
-  min-height: 150px;
-}
-
 @media (max-width: 1199px) {
   /* desktop (<= 1199) */
 }
