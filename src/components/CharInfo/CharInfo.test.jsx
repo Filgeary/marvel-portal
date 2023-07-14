@@ -39,7 +39,8 @@ describe('CharInfo', () => {
   it('should render fallback if char was not provided', () => {
     initRender()
 
-    expect(screen.getByRole('heading', { name: /no selected char/i })).toBeInTheDocument()
+    expect(screen.getByTestId('skeleton')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /select a character, please/i })).toBeInTheDocument()
     expect(
       screen.queryByRole('heading', { name: /guardians of the galaxy/i }),
     ).not.toBeInTheDocument()

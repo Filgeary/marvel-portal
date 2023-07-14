@@ -43,7 +43,8 @@ describe('CharListContainer', () => {
   it('should click on charCard & show charInfo aside', async () => {
     initRender()
 
-    expect(screen.getByRole('heading', { name: /no selected char/i })).toBeInTheDocument()
+    expect(screen.getByTestId('skeleton')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /select a character, please/i })).toBeInTheDocument()
 
     await screen.findByRole('heading', { name: /characters list/i })
     userEvent.click(screen.getByRole('heading', { name: /guardians of the galaxy/i }))

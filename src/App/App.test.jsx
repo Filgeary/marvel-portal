@@ -15,7 +15,8 @@ describe('App', () => {
 
     // CharList & CharInfo
     expect(screen.getByRole('heading', { name: /characters list/i })).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /no selected char/i })).toBeInTheDocument()
+    expect(screen.getByTestId('skeleton')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /select a character, please/i })).toBeInTheDocument()
 
     // AppFooter
     expect(screen.getByRole('heading', { name: /project info/i })).toBeInTheDocument()
