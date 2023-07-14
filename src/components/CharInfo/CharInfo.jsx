@@ -2,6 +2,7 @@ import React from 'react'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
 import ExternalLink from '../_shared/ExternalLink'
+import Skeleton from '../_shared/Skeleton'
 import styles from './CharInfo.module.css'
 
 /**
@@ -11,9 +12,12 @@ import styles from './CharInfo.module.css'
 const CharInfo = ({ char }) => {
   if (!char) {
     return (
-      <h2>
-        <mark className='px-05'>No Selected Char</mark>
-      </h2>
+      <section className='d-grid align-items-start sticky top-1 p-0'>
+        <h2 style={{ paddingLeft: '1.5rem', color: 'var(--cra-font-light)' }}>
+          Select a Character, please
+        </h2>
+        <Skeleton />
+      </section>
     )
   }
 
