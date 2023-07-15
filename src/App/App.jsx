@@ -1,6 +1,7 @@
 import React from 'react'
 import AppFooter from '../components/AppFooter'
 import AppHeader from '../components/AppHeader'
+import ErrorBoundary from '../components/_shared/ErrorBoundary'
 import CharListContainer from '../containers/CharListContainer'
 import RandomCharContainer from '../containers/RandomCharContainer'
 import styles from './App.module.css'
@@ -11,8 +12,13 @@ const App = () => {
       <AppHeader />
 
       <main className={styles.main}>
-        <RandomCharContainer />
-        <CharListContainer />
+        <ErrorBoundary>
+          <RandomCharContainer />
+        </ErrorBoundary>
+
+        <ErrorBoundary>
+          <CharListContainer />
+        </ErrorBoundary>
       </main>
 
       <AppFooter />
