@@ -16,6 +16,7 @@ const RandomChar = ({ char }) => {
     <section className={styles.charSection}>
       <figure className='relative'>
         <img
+          data-testid='randomChar-thumbnail'
           src={thumbnail}
           alt={name}
           width={250}
@@ -31,7 +32,7 @@ const RandomChar = ({ char }) => {
         >
           {name}
         </h2>
-        <p>{description}</p>
+        <p data-testid='randomChar-description'>{description}</p>
 
         <div className='d-flex gap-1 justify-space-between align-items-end'>
           {externalLinks?.map(({ url, type }, idx) => (
