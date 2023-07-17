@@ -10,7 +10,7 @@ import CharList from './CharList'
 const allCharsResponseObj = JSON.parse(JSON.stringify(allCharsResponseJSON))
 const charList = allCharsResponseObj.data?.results
 
-const initRender = charListParam => {
+const initRender = (charListParam, isLoading = false, hasMoreChars = true) => {
   const onSelectCharMocked = jest.fn()
   const onLoadMoreMocked = jest.fn()
 
@@ -19,6 +19,8 @@ const initRender = charListParam => {
       charList={charListParam || charList}
       onSelectChar={onSelectCharMocked}
       onLoadMore={onLoadMoreMocked}
+      isLoading={isLoading}
+      hasMoreChars={hasMoreChars}
     />,
   )
 
@@ -52,5 +54,18 @@ describe('CharList', () => {
 
     // fallback
     expect(screen.getByRole('heading', { name: /characters not found!/i })).toBeInTheDocument()
+  })
+
+  it('should show loading text if data is loading', () => {
+    initRender(charList, true)
+
+    expect(screen.getByRole('button', { name: /loading.../i })).toBeInTheDocument()
+  })
+
+  it('should show fallback text if no more chars to fetch', () => {
+    initRender(charList, false, false)
+
+    expect(screen.queryByRole('button', { name: /load more/i })).not.toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: /No More Characters!/i })).toBeInTheDocument()
   })
 })

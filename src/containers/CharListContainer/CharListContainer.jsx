@@ -3,6 +3,7 @@ import CharInfo from '../../components/CharInfo'
 import CharList from '../../components/CharList'
 import ErrorMessage from '../../components/_shared/ErrorMessage'
 import Spinner from '../../components/_shared/Spinner'
+import { CHAR_PAGE_LIMIT } from '../../constants'
 import { marvelService } from '../../services/marvelService'
 import { validateError } from '../../utils'
 import styles from './CharListContainer.module.css'
@@ -20,19 +21,33 @@ class CharListContainer extends React.Component {
     isLoading: false,
     isError: false,
     errorMsg: '',
+    isInitialFetching: true,
+    offset: 0,
+    charsCount: 0,
+    totalChars: 0,
   }
 
   componentDidMount() {
     this.handleUpdate()
   }
 
-  handleUpdate = () => {
+  handleUpdate = (offset = 0, limit = CHAR_PAGE_LIMIT) => {
     this.setState({ isLoading: true })
 
     marvelService
-      .getAllChars({ limit: 18 })
+      .getAllChars({ limit, offset })
       .then(res => {
-        this.setState({ charList: res.data?.results, isLoading: false, isError: false })
+        const { results = [], offset = 0, count = 0, total = 0 } = res.data ?? {}
+
+        this.setState(prevState => ({
+          charList: [...(prevState.charList ?? []), ...results],
+          isLoading: false,
+          isError: false,
+          isInitialFetching: false,
+          offset: offset,
+          charsCount: count,
+          totalChars: total,
+        }))
       })
       .catch(err => this.handleError(err))
   }
@@ -47,19 +62,33 @@ class CharListContainer extends React.Component {
   }
 
   render() {
-    const { charList, isLoading, isError, errorMsg, selectedChar } = this.state
+    const {
+      charList,
+      isLoading,
+      isError,
+      errorMsg,
+      selectedChar,
+      isInitialFetching,
+      offset,
+      charsCount,
+      totalChars,
+    } = this.state
+
+    const hasMoreChars = totalChars - offset - charsCount > 0
 
     return (
       <div className='container'>
         <div className={styles.wrapper}>
           <div style={{ minHeight: 250 }}>
-            {isLoading && <Spinner />}
+            {isLoading && isInitialFetching && <Spinner />}
             {isError && <ErrorMessage text={errorMsg} />}
-            {!isError && !isLoading && (
+            {!isError && !isInitialFetching && (
               <CharList
                 charList={charList}
                 onSelectChar={id => this.handleSelectChar(id)}
-                onLoadMore={() => {}} // TODO: add handler
+                onLoadMore={() => this.handleUpdate(offset + CHAR_PAGE_LIMIT)}
+                isLoading={isLoading}
+                hasMoreChars={hasMoreChars}
               />
             )}
           </div>

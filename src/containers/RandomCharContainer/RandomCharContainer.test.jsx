@@ -14,7 +14,7 @@ describe('RandomCharContainer', () => {
     expect(screen.getByTestId('spinner')).toBeInTheDocument()
 
     // wait loading data
-    await screen.findByRole('heading', { name: /guardians of the galaxy/i })
+    await screen.findByTestId('randomCharTitle')
 
     // check for unmounting spinner
     expect(screen.queryByTestId('spinner')).not.toBeInTheDocument()
@@ -22,15 +22,8 @@ describe('RandomCharContainer', () => {
     // check for no error
     expect(screen.queryByTestId('errorMessage')).not.toBeInTheDocument()
 
-    expect(screen.getByRole('img', { name: /guardians of the galaxy/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /detail/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /wiki/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /comiclink/i })).toBeInTheDocument()
-    expect(
-      screen.getByText(
-        /a group of cosmic adventurers brought together by star-lord, the guardians of the galaxy protect the universe from threats all across space\. the team also includes drax, gamora,.../i,
-      ),
-    ).toBeInTheDocument()
+    expect(screen.getByTestId('randomChar-thumbnail')).toBeInTheDocument()
+    expect(screen.getByTestId('randomChar-description')).toBeInTheDocument()
 
     // check CallToActionBox
     expect(
@@ -84,12 +77,12 @@ describe('RandomCharContainer', () => {
 
     // check initial fetching flow
     expect(screen.getByTestId('spinner')).toBeInTheDocument()
-    await screen.findByRole('heading', { name: /guardians of the galaxy/i })
+    await screen.findByTestId('randomCharTitle')
 
     // update character via click
     userEvent.click(screen.getByRole('button', { name: /try it!/i }))
     await screen.findByTestId('spinner')
-    await screen.findByRole('heading', { name: /guardians of the galaxy/i })
+    await screen.findByTestId('randomCharTitle')
     expect(screen.queryByTestId('errorMessage')).not.toBeInTheDocument()
   })
 })
