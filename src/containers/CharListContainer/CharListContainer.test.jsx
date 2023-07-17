@@ -59,4 +59,18 @@ describe('CharListContainer', () => {
     ).toBeInTheDocument()
     expect(screen.getByRole('heading', { name: /comics:/i })).toBeInTheDocument()
   })
+
+  it('should click on LoadMore & fetch additional chars', async () => {
+    initRender()
+
+    // wait loading data
+    await screen.findByRole('heading', { name: /characters list/i })
+    expect(screen.getAllByTestId('charListItem')).toHaveLength(18)
+
+    // fetch additional chars via click
+    userEvent.click(screen.getByRole('button', { name: /load more/i }))
+    await screen.findByRole('button', { name: /loading.../i })
+    await screen.findByRole('button', { name: /load more/i })
+    expect(screen.getAllByTestId('charListItem')).toHaveLength(36)
+  })
 })

@@ -8,8 +8,10 @@ import styles from './CharList.module.css'
  * @param {import('../../types/ICharacter').ICharacter[] | null | undefined} props.charList
  * @param {Function} props.onSelectChar
  * @param {() => void} props.onLoadMore
+ * @param {boolean} props.isLoading
+ * @param {boolean} props.hasMoreChars
  */
-const CharList = ({ charList, onSelectChar, onLoadMore }) => {
+const CharList = ({ charList, onSelectChar, onLoadMore, isLoading, hasMoreChars }) => {
   const transformedCharList = charList?.map(char =>
     transformCharacter(char, IMAGE_VARIANT['200x200']),
   )
@@ -56,13 +58,18 @@ const CharList = ({ charList, onSelectChar, onLoadMore }) => {
         })}
       </ul>
 
-      <button
-        type='button'
-        className='btn btn-primary btn-shadow-light m-auto'
-        onClick={onLoadMore}
-      >
-        Load More
-      </button>
+      {hasMoreChars ? (
+        <button
+          type='button'
+          className={'btn btn-primary btn-shadow-light m-auto'}
+          onClick={onLoadMore}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Loading...' : 'Load More'}
+        </button>
+      ) : (
+        <h3 style={{ color: 'white' }}>No More Characters!</h3>
+      )}
     </section>
   )
 }
