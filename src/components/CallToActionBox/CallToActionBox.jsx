@@ -1,6 +1,10 @@
 import React from 'react'
 import styles from './CallToActionBox.module.css'
 
+/**
+ * @param {object} props
+ * @param {() => void} props.onClickActionButton
+ */
 const CallToActionBox = ({ onClickActionButton }) => {
   return (
     <section className={styles.ctaSection}>
