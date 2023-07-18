@@ -1,3 +1,4 @@
+import _uniqBy from 'lodash/uniqBy'
 import React from 'react'
 import CharInfo from '../../components/CharInfo'
 import CharList from '../../components/CharList'
@@ -39,15 +40,20 @@ class CharListContainer extends React.Component {
       .then(res => {
         const { results = [], offset = 0, count = 0, total = 0 } = res.data ?? {}
 
-        this.setState(prevState => ({
-          charList: [...(prevState.charList ?? []), ...results],
-          isLoading: false,
-          isError: false,
-          isInitialFetching: false,
-          offset: offset,
-          charsCount: count,
-          totalChars: total,
-        }))
+        this.setState(prevState => {
+          // to prevent duplicating in strict mode
+          const uniqedCharList = _uniqBy([...(prevState.charList ?? []), ...results], 'id')
+
+          return {
+            charList: uniqedCharList,
+            isLoading: false,
+            isError: false,
+            isInitialFetching: false,
+            offset: offset,
+            charsCount: count,
+            totalChars: total,
+          }
+        })
       })
       .catch(err => this.handleError(err))
   }
