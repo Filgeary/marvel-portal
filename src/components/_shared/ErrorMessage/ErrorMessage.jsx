@@ -2,6 +2,10 @@ import React from 'react'
 import styles from './ErrorMessage.module.css'
 import image from './pulsating-engine.svg'
 
+/**
+ * @param {object} props
+ * @param {string=} props.text
+ */
 const ErrorMessage = ({ text = 'Unknown Error!' }) => {
   return (
     <div

@@ -6,7 +6,7 @@ import styles from './CharList.module.css'
 /**
  * @param {object} props
  * @param {import('../../types/ICharacter').ICharacter[] | null | undefined} props.charList
- * @param {Function} props.onSelectChar
+ * @param {(id: number | undefined) => void} props.onSelectChar
  * @param {() => void} props.onLoadMore
  * @param {boolean} props.isLoading
  * @param {boolean} props.hasMoreChars
