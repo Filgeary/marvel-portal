@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CallToActionBox from '../../components/CallToActionBox'
 import RandomChar from '../../components/RandomChar'
 import ErrorMessage from '../../components/_shared/ErrorMessage'
@@ -7,52 +7,51 @@ import { marvelService } from '../../services/marvelService'
 import { randomCharId, validateError } from '../../utils'
 import styles from './RandomCharContainer.module.css'
 
-class RandomCharContainer extends React.Component {
-  state = {
-    /**
-     * @type {import('../../types/ICharacter').ICharacter | null}
-     */
-    char: null,
-    isLoading: false,
-    isError: false,
-    errorMsg: '',
+const RandomCharContainer = () => {
+  const [char, setChar] = useState(null) // TODO: add types
+  const [isLoading, setIsLoading] = useState(false)
+  const [isError, setIsError] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
+  const [shouldUpdate, setShouldUpdate] = useState(true)
+
+  const handleUpdate = () => setShouldUpdate(true)
+
+  const handleError = err => {
+    setIsLoading(false)
+    setIsError(true)
+    setErrorMsg(validateError(err))
+    setShouldUpdate(false)
   }
 
-  componentDidMount() {
-    this.handleUpdate()
-  }
+  // fetch random char on mounting & update with handler
+  useEffect(() => {
+    if (!shouldUpdate) return
 
-  handleUpdate = () => {
-    this.setState({ isLoading: true })
-
+    setIsLoading(true)
     marvelService
       .getAllChars({ limit: 1, offset: randomCharId() })
       .then(res => {
-        this.setState({ char: res.data?.results?.at(0), isLoading: false, isError: false })
+        // @ts-ignore
+        setChar(res.data?.results?.at(0))
+        setIsLoading(false)
+        setIsError(false)
+        setShouldUpdate(false)
       })
-      .catch(err => this.handleError(err))
-  }
+      .catch(err => handleError(err))
+  }, [shouldUpdate])
 
-  handleError = err => {
-    this.setState({ isLoading: false, isError: true, errorMsg: validateError(err) })
-  }
-
-  render() {
-    const { char, isLoading, isError, errorMsg } = this.state
-
-    return (
-      <div className='container'>
-        <div className={styles.wrapper}>
-          <div style={{ minHeight: 250 }}>
-            {isLoading && <Spinner />}
-            {isError && <ErrorMessage text={errorMsg} />}
-            {!isError && !isLoading && <RandomChar char={char} />}
-          </div>
-          <CallToActionBox onClickActionButton={this.handleUpdate} />
+  return (
+    <div className='container'>
+      <div className={styles.wrapper}>
+        <div style={{ minHeight: 250 }}>
+          {isLoading && <Spinner />}
+          {isError && <ErrorMessage text={errorMsg} />}
+          {!isError && !isLoading && <RandomChar char={char} />}
         </div>
+        <CallToActionBox onClickActionButton={handleUpdate} />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default RandomCharContainer
