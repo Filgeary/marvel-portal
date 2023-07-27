@@ -1,15 +1,15 @@
 import { BASE_MARVEL_URL, MARVEL_PUBLIC_KEY } from '../constants'
 
-const getData = async (url = '', params = {}) => {
+const getData = async (path, params = {}) => {
   const searchParams = new URLSearchParams(params)
   searchParams.append('apikey', MARVEL_PUBLIC_KEY)
-  const endpoint = BASE_MARVEL_URL + url + '?' + searchParams.toString()
+  const endpoint = BASE_MARVEL_URL + path + '?' + searchParams.toString()
 
   try {
     const res = await fetch(endpoint)
 
     if (!res.ok) {
-      if (res.status >= 400 && res.status < 599) {
+      if (res.status >= 400) {
         const result = await res.json()
         throw new Error(JSON.stringify(result))
       }
@@ -26,7 +26,7 @@ const getData = async (url = '', params = {}) => {
 }
 
 export const marvelService = {
-  getAllChars: async (params = {}) => {
+  getAllChars: async params => {
     return await getData('/characters', params)
   },
 
