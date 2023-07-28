@@ -14,6 +14,6 @@ export type AllCharsParams = Partial<{
 }>
 
 export declare const marvelService: {
-  getAllChars: (params?: AllCharsParams) => Promise<ICharacterDataWrapper>
-  getCharacter: (id: number) => Promise<ICharacterDataWrapper>
+  getCharacters: (params?: AllCharsParams) => Promise<ICharacterDataWrapper>
+  getCharacterById: (id: number) => Promise<ICharacterDataWrapper>
 }

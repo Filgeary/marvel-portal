@@ -26,11 +26,11 @@ const getData = async (path, params = {}) => {
 }
 
 export const marvelService = {
-  getAllChars: async params => {
+  getCharacters: async params => {
     return await getData('/characters', params)
   },
 
-  getCharacter: async id => {
+  getCharacterById: async id => {
     return await getData(`/characters/${id}`)
   },
 }

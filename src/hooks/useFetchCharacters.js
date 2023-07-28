@@ -6,7 +6,7 @@ import { useFetch } from './useFetch'
  */
 export const useFetchCharacters = queryParams => {
   return useFetch(
-    () => marvelService.getAllChars(queryParams),
+    () => marvelService.getCharacters(queryParams),
     [queryParams.offset, queryParams.limit],
   )
 }
