@@ -515,3 +515,27 @@ img[data-id='omgSticker'] {
 *[data-id='bgImageShield'] {
   animation: rotate 8s linear infinite;
 }
+
+/* Custom Scrollbars */
+/* =================================================== */
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #666 #666;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--cra-bg-dark);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #666;
+  /* border-radius: 20px; */
+  border: 3px solid #666;
+}
