@@ -33,4 +33,12 @@ export const marvelService = {
   getCharacterById: async id => {
     return await getData(`/characters/${id}`)
   },
+
+  getComics: async params => {
+    return await getData('/comics', params)
+  },
+
+  getComicById: async id => {
+    return await getData(`/comics/${id}`)
+  },
 }
