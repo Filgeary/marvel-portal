@@ -18,3 +18,20 @@ export const transformCharacter = (char, imageVariant, isFullDescription = true)
     comics,
   }
 }
+
+/**
+ * @param {import('../types/IComic').IComic | null | undefined} comic
+ */
+export const transformComic = (comic, imageVariant) => {
+  if (!comic) return
+
+  const { id, title, thumbnail, dates, prices } = comic
+
+  return {
+    id,
+    title,
+    thumbnail: thumbnail?.path + imageVariant + `.${thumbnail?.extension}`,
+    onsaleDate: dates?.find(elem => elem.type === 'onsaleDate')?.date ?? 'No OnSale Date',
+    price: prices?.find(elem => elem.type === 'printPrice')?.price || 'Not Available',
+  }
+}
