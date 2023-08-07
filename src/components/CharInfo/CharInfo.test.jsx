@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 // import userEvent from '@testing-library/user-event'
 import React from 'react'
-import charResponseJSON from '../../__fixtures/api/character.json'
+import charResponseJSON from '../../__fixtures/api/characterById.json'
 import CharInfo from './CharInfo'
 
 /**

@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
-import allCharsResponseJSON from '../../__fixtures/api/allCharacters.json'
+import charactersResponseJSON from '../../__fixtures/api/characters.json'
 import CharList from './CharList'
 
 /**
  * @type {import('../../types/ICharacter').ICharacterDataWrapper}
  */
-const allCharsResponseObj = JSON.parse(JSON.stringify(allCharsResponseJSON))
+const allCharsResponseObj = JSON.parse(JSON.stringify(charactersResponseJSON))
 const charList = allCharsResponseObj.data?.results
 
 const initRender = (charListParam, isLoading = false, hasMoreChars = true) => {

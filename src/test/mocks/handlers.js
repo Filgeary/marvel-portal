@@ -1,6 +1,6 @@
 import { rest } from 'msw'
-import allCharsJson from '../../__fixtures/api/allCharacters.json'
-import allCharsOffset315Json from '../../__fixtures/api/allCharactersOffset315.json'
+import charactersJson from '../../__fixtures/api/characters.json'
+import charactersByOffset315Json from '../../__fixtures/api/charactersByOffset315.json'
 import { BASE_MARVEL_URL } from '../../constants'
 
 export const handlers = [
@@ -8,9 +8,9 @@ export const handlers = [
     const offset = req.url.searchParams.get('offset')
 
     if (!offset || offset === '0') {
-      return res(ctx.json(allCharsJson))
+      return res(ctx.json(charactersJson))
     } else {
-      return res(ctx.json(allCharsOffset315Json))
+      return res(ctx.json(charactersByOffset315Json))
     }
   }),
 ]
