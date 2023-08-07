@@ -61,7 +61,7 @@ interface TextObject {
 }
 
 interface Url {
-  type: string
+  type: 'detail' | 'purchase' | 'reader'
   url: string
 }
 
@@ -86,12 +86,12 @@ interface CollectedIssue {
 }
 
 interface ComicDate {
-  type: string
+  type: 'onsaleDate' | 'focDate'
   date: Date
 }
 
 interface ComicPrice {
-  type: string
+  type: 'printPrice'
   price: number
 }
 
@@ -128,7 +128,6 @@ interface Characters {
 interface CharacterSummary {
   resourceURI: string
   name: string
-  role: string
 }
 
 interface Stories {
