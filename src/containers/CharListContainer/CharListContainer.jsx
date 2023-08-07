@@ -4,7 +4,7 @@ import CharInfo from '../../components/CharInfo'
 import CharList from '../../components/CharList'
 import ErrorMessage from '../../components/_shared/ErrorMessage'
 import Spinner from '../../components/_shared/Spinner'
-import { CHAR_PAGE_LIMIT } from '../../constants'
+import { PAGE_LIMIT_CHAR } from '../../constants'
 import { useFetchCharacters } from '../../hooks/useFetchCharacters'
 import styles from './CharListContainer.module.css'
 
@@ -15,7 +15,7 @@ const CharListContainer = () => {
   const [pageOffset, setPageOffset] = useState(0)
 
   const { responseData, isLoading, isError, errorMsg, isInitialFetching } = useFetchCharacters({
-    limit: CHAR_PAGE_LIMIT,
+    limit: PAGE_LIMIT_CHAR,
     offset: pageOffset,
   })
 
@@ -33,7 +33,7 @@ const CharListContainer = () => {
   }
 
   const handleLoadMore = () => {
-    setPageOffset(prevState => prevState + CHAR_PAGE_LIMIT)
+    setPageOffset(prevState => prevState + PAGE_LIMIT_CHAR)
   }
 
   const hasMoreChars = total - offset - count > 0
