@@ -1,6 +1,7 @@
 import React from 'react'
 import AppFooter from '../components/AppFooter'
 import AppHeader from '../components/AppHeader'
+import ComicsBanner from '../components/ComicsBanner'
 import ErrorBoundary from '../components/_shared/ErrorBoundary'
 import CharListContainer from '../containers/CharListContainer'
 import RandomCharContainer from '../containers/RandomCharContainer'
@@ -12,6 +13,8 @@ const App = () => {
       <AppHeader />
 
       <main className={styles.main}>
+        <ComicsBanner />
+
         <ErrorBoundary>
           <RandomCharContainer />
         </ErrorBoundary>
