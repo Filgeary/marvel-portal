@@ -2,7 +2,7 @@ import { marvelService } from '../services/marvelService'
 import { useFetch } from './useFetch'
 
 /**
- * @param {import("../services/marvelService").SearchParamsCharacters} queryParams
+ * @param {import("../types/SearchParamsCharacters").SearchParamsCharacters} queryParams
  */
 export const useFetchCharacters = queryParams => {
   return useFetch(
