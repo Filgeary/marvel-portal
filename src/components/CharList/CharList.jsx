@@ -44,6 +44,7 @@ const CharList = ({ charList, onSelectChar, onLoadMore, isLoading, hasMoreChars 
               >
                 <img
                   data-testid='charListItemImage'
+                  loading='lazy'
                   src={thumbnail}
                   alt={name}
                   width={200}
