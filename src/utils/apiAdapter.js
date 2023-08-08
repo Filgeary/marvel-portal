@@ -27,11 +27,23 @@ export const transformComic = (comic, imageVariant) => {
 
   const { id, title, thumbnail, dates, prices } = comic
 
+  const date = dates?.find(elem => elem.type === 'onsaleDate')?.date
+  const onsaleDate = date
+    ? new Date(date).toLocaleString(undefined, {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      })
+    : 'No OnSale Date'
+
+  const price = prices?.find(elem => elem.type === 'printPrice')?.price
+  const printPrice = price ? `$${price}` : 'Not Available'
+
   return {
     id,
     title,
     thumbnail: thumbnail?.path + imageVariant + `.${thumbnail?.extension}`,
-    onsaleDate: dates?.find(elem => elem.type === 'onsaleDate')?.date ?? 'No OnSale Date',
-    price: prices?.find(elem => elem.type === 'printPrice')?.price || 'Not Available',
+    onsaleDate,
+    printPrice,
   }
 }
