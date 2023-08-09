@@ -4,18 +4,19 @@
 
 ## Tech Stack
 
-- React 18
-- Class Components
+- React 18, Hooks
+- Custom Hooks
 - CSS Modules
 - Typed API Models with `d.ts`
 - Testing
-  - React-testing-library (unit & integration)
+  - React-Testing-library (unit & integration)
   - MSW (API mocking)
 
 ## Features
 
 - Random Character block
 - Characters List with Character Info
+- Comics List
 
 ## Dev Features
 
@@ -25,10 +26,10 @@
 
 ## TODO
 
-- [ ] Hooks
 - [ ] Routing
 - [ ] Animations
 - [ ] New Features like Favorites, complex Filters ?
 - [ ] Store/Context ?
 - [ ] External DB ?
 - [ ] full TS ?
+- [ ] e2e tests ?
