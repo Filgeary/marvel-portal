@@ -18,3 +18,32 @@ export const transformCharacter = (char, imageVariant, isFullDescription = true)
     comics,
   }
 }
+
+/**
+ * @param {import('../types/IComic').IComic | null | undefined} comic
+ */
+export const transformComic = (comic, imageVariant) => {
+  if (!comic) return
+
+  const { id, title, thumbnail, dates, prices } = comic
+
+  const date = dates?.find(elem => elem.type === 'onsaleDate')?.date
+  const onsaleDate = date
+    ? new Date(date).toLocaleString(undefined, {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      })
+    : 'No OnSale Date'
+
+  const price = prices?.find(elem => elem.type === 'printPrice')?.price
+  const printPrice = price ? `$${price}` : 'Not Available'
+
+  return {
+    id,
+    title,
+    thumbnail: thumbnail?.path + imageVariant + `.${thumbnail?.extension}`,
+    onsaleDate,
+    printPrice,
+  }
+}

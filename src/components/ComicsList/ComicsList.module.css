@@ -1,0 +1,64 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 0;
+  padding-bottom: 1.5rem;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(216px, 1fr));
+  gap: 1rem;
+  justify-items: center;
+}
+
+.listItem {
+  max-width: 216px;
+}
+
+.listLink {
+  color: var(--cra-font-light);
+  transition: all 300ms;
+}
+.listLink img {
+  transform: scale(1);
+  transition: all 300ms;
+}
+.listLink:hover,
+.listLink:focus,
+.listLink:active {
+  color: var(--cra-accent-color);
+}
+.listLink:hover img,
+.listLink:focus img,
+.listLink:active img {
+  transform: scale(1.07);
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  font-size: 110%;
+}
+
+.onsaleDate,
+.printPrice {
+  font-family: system-ui, sans-serif;
+  color: var(--cra-bg-light-grey);
+}
+
+@media (max-width: 1199px) {
+  /* desktop (<= 1199) */
+}
+
+@media (max-width: 1023px) {
+  /* tablet (<= 1023) */
+}
+
+@media (max-width: 767px) {
+  /* mobile -> tablet (<= 767) */
+}
+
+@media (max-width: 425px) {
+  /* only mobile (<= 425) */
+}
