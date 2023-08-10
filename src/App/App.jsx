@@ -3,8 +3,8 @@ import ComicsBanner from '../components/ComicsBanner'
 import ErrorBoundary from '../components/_shared/ErrorBoundary'
 import CharListContainer from '../containers/CharListContainer'
 import ComicsListContainer from '../containers/ComicsListContainer'
-import RandomCharContainer from '../containers/RandomCharContainer'
 import AppLayout from '../layout/AppLayout'
+import HomePage from '../pages/HomePage'
 
 const App = () => {
   return (
@@ -17,9 +17,7 @@ const App = () => {
         </ErrorBoundary>
       </div>
 
-      <ErrorBoundary>
-        <RandomCharContainer />
-      </ErrorBoundary>
+      <HomePage />
 
       <ErrorBoundary>
         <CharListContainer />
