@@ -220,9 +220,17 @@ article {
 /* Utils */
 /* =================================================== */
 
+.text-gradient {
+  background-image: linear-gradient(0deg, var(--cra-accent-color), fuchsia);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
+
 .text-left {
   text-align: left !important;
 }
@@ -383,6 +391,9 @@ article {
 /* Padding-left */
 .pl-0 {
   padding-left: 0 !important;
+}
+.pl-05 {
+  padding-left: 0.5rem !important;
 }
 .pl-1 {
   padding-left: 1rem !important;
