@@ -1,9 +1,9 @@
 import React from 'react'
 import ComicsBanner from '../components/ComicsBanner'
 import ErrorBoundary from '../components/_shared/ErrorBoundary'
-import CharListContainer from '../containers/CharListContainer'
 import ComicsListContainer from '../containers/ComicsListContainer'
 import AppLayout from '../layout/AppLayout'
+import CharactersPage from '../pages/CharactersPage'
 import HomePage from '../pages/HomePage'
 
 const App = () => {
@@ -18,10 +18,7 @@ const App = () => {
       </div>
 
       <HomePage />
-
-      <ErrorBoundary>
-        <CharListContainer />
-      </ErrorBoundary>
+      <CharactersPage />
     </AppLayout>
   )
 }
