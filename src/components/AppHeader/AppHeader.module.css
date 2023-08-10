@@ -34,6 +34,13 @@
   font-family: 'DynaPuff', cursive;
   font-size: larger;
   color: var(--cra-bg-dark);
+  transition: color 300ms;
+}
+.link:hover,
+.link:focus,
+.link:active {
+  color: var(--cra-font-light);
+  transition: color 300ms;
 }
 
 @media (max-width: 1199px) {

@@ -33,13 +33,12 @@ const AppHeader = () => {
                 to='/characters'
                 className={styles.link}
                 style={({ isActive }) => ({
-                  color: isActive ? 'var(--cra-font-light)' : 'var(--cra-bg-dark)',
-                  borderBottom: isActive ? '2px solid var(--cra-font-light)' : 'none',
+                  color: isActive ? 'var(--cra-font-light)' : '',
                 })}
               >
                 Characters
               </NavLink>
-              <span style={{ paddingLeft: '0.5rem' }}>/</span>
+              <span className='pl-05'>/</span>
             </li>
 
             <li className={styles.navListItem}>
@@ -47,13 +46,12 @@ const AppHeader = () => {
                 to='/comics'
                 className={styles.link}
                 style={({ isActive }) => ({
-                  color: isActive ? 'var(--cra-font-light)' : 'var(--cra-bg-dark)',
-                  borderBottom: isActive ? '2px solid var(--cra-font-light)' : 'none',
+                  color: isActive ? 'var(--cra-font-light)' : '',
                 })}
               >
                 Comics
               </NavLink>
-              <span style={{ paddingLeft: '0.5rem' }}>/</span>
+              <span className='pl-05'>/</span>
             </li>
           </ul>
         </nav>
