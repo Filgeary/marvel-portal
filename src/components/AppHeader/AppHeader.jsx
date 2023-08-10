@@ -5,7 +5,10 @@ import styles from './AppHeader.module.css'
 
 const AppHeader = () => {
   return (
-    <header className={styles.header}>
+    <header
+      className={styles.header}
+      data-testid='appHeader'
+    >
       <div className={cn('container', styles.wrapper)}>
         <img
           data-id='omgSticker'
