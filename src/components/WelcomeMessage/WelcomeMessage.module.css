@@ -1,0 +1,30 @@
+.heading {
+  font-size: 220%;
+  color: var(--cra-font-light);
+  text-align: center;
+}
+
+.title {
+  font-size: 140%;
+  line-height: 40px;
+  background-image: linear-gradient(0deg, var(--cra-accent-color), fuchsia);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+@media (max-width: 1199px) {
+  /* desktop (<= 1199) */
+}
+
+@media (max-width: 1023px) {
+  /* tablet (<= 1023) */
+}
+
+@media (max-width: 767px) {
+  /* mobile -> tablet (<= 767) */
+}
+
+@media (max-width: 425px) {
+  /* only mobile (<= 425) */
+}
