@@ -1,4 +1,5 @@
 .footer {
+  margin-top: auto;
   color: var(--cra-font-light);
   background: var(--cra-bg-dark);
 }

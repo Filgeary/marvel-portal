@@ -8,7 +8,7 @@ const NotFound404 = () => {
     <section
       data-testid='notFound404'
       style={{ background: 'var(--cra-bg-light)' }}
-      className='d-flex flex-column gap-4 align-items-center text-center w-100'
+      className='d-flex flex-column gap-2 align-items-center text-center w-100'
     >
       <img
         src={image404}

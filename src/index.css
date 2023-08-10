@@ -86,7 +86,7 @@ select {
   --cra-accent-secondary-color: dodgerblue;
   --cra-accent-color-dark: hsl(353, 100%, 31%);
   --cra-font-dark: hsl(0, 0%, 25%);
-  --cra-font-light: white;
+  --cra-font-light: hsl(0, 0%, 95%);
   --cra-bg-dark: hsl(0, 0%, 14%);
   --cra-bg-grey: hsl(0, 0%, 36%);
   --cra-bg-light-grey: hsl(0, 0%, 87%);
@@ -111,6 +111,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--cra-font-dark);
+  background: var(--cra-bg-dark);
 }
 
 img {
