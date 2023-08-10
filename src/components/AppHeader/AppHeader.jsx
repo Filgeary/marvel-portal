@@ -1,5 +1,6 @@
 import cn from 'clsx'
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import omgSticker from '../../assets/images/omg.png'
 import styles from './AppHeader.module.css'
 
@@ -17,32 +18,42 @@ const AppHeader = () => {
           className={styles.omgSticker}
         />
         <h1>
-          <a
-            href='#home'
+          <Link
+            to='/'
             className={styles.titleLink}
           >
             MARVEL <small style={{ fontSize: '65%' }}>portal</small>
-          </a>
+          </Link>
         </h1>
 
         <nav>
           <ul className='d-flex gap-1 align-items-center'>
-            <li>
-              <a
-                href='#characters'
+            <li className={styles.navListItem}>
+              <NavLink
+                to='/characters'
                 className={styles.link}
+                style={({ isActive }) => ({
+                  color: isActive ? 'var(--cra-font-light)' : 'var(--cra-bg-dark)',
+                  borderBottom: isActive ? '2px solid var(--cra-font-light)' : 'none',
+                })}
               >
                 Characters
-              </a>
+              </NavLink>
+              <span style={{ paddingLeft: '0.5rem' }}>/</span>
             </li>
-            {' / '}
-            <li>
-              <a
-                href='#comics'
+
+            <li className={styles.navListItem}>
+              <NavLink
+                to='/comics'
                 className={styles.link}
+                style={({ isActive }) => ({
+                  color: isActive ? 'var(--cra-font-light)' : 'var(--cra-bg-dark)',
+                  borderBottom: isActive ? '2px solid var(--cra-font-light)' : 'none',
+                })}
               >
                 Comics
-              </a>
+              </NavLink>
+              <span style={{ paddingLeft: '0.5rem' }}>/</span>
             </li>
           </ul>
         </nav>

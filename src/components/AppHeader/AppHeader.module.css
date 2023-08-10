@@ -26,6 +26,10 @@
   color: var(--cra-font-light);
 }
 
+.navListItem:last-child > span {
+  display: none;
+}
+
 .link {
   font-family: 'DynaPuff', cursive;
   font-size: larger;
