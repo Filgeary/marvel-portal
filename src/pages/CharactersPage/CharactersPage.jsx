@@ -5,9 +5,13 @@ import CharListContainer from '../../containers/CharListContainer'
 
 const CharactersPage = () => {
   return (
-    <ErrorBoundary>
-      <CharListContainer />
-    </ErrorBoundary>
+    <div className='container d-grid align-items-start gap-4'>
+      <h1 className='text-gradient line-height-1'>Characters</h1>
+
+      <ErrorBoundary>
+        <CharListContainer />
+      </ErrorBoundary>
+    </div>
   )
 }
 

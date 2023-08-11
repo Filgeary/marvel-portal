@@ -52,7 +52,7 @@ const ComicsList = ({ comicsList, onLoadMore, isLoading, hasMoreComics }) => {
                   />
                 </figure>
 
-                <div className='d-flex flex-column text-center p-1'>
+                <div className='d-flex flex-column text-center p-1 px-05'>
                   <h3 className={styles.title}>{title}</h3>
                   <small className={styles.onsaleDate}>{onsaleDate}</small>
                   <small className={styles.printPrice}>{printPrice}</small>

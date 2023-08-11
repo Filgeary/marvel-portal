@@ -39,24 +39,22 @@ const CharListContainer = () => {
   const hasMoreChars = total - offset - count > 0
 
   return (
-    <div className='container'>
-      <div className={styles.wrapper}>
-        <div style={{ minHeight: 250 }}>
-          {isLoading && isInitialFetching && <Spinner />}
-          {isError && <ErrorMessage text={errorMsg} />}
-          {!isError && !isInitialFetching && (
-            <CharList
-              charList={charList}
-              onSelectChar={id => handleSelectChar(id)}
-              onLoadMore={handleLoadMore}
-              isLoading={isLoading}
-              hasMoreChars={hasMoreChars}
-            />
-          )}
-        </div>
-
-        <CharInfo char={selectedChar} />
+    <div className={styles.wrapper}>
+      <div style={{ minHeight: 250 }}>
+        {isLoading && isInitialFetching && <Spinner />}
+        {isError && <ErrorMessage text={errorMsg} />}
+        {!isError && !isInitialFetching && (
+          <CharList
+            charList={charList}
+            onSelectChar={id => handleSelectChar(id)}
+            onLoadMore={handleLoadMore}
+            isLoading={isLoading}
+            hasMoreChars={hasMoreChars}
+          />
+        )}
       </div>
+
+      <CharInfo char={selectedChar} />
     </div>
   )
 }

@@ -227,6 +227,10 @@ article {
   -webkit-background-clip: text;
 }
 
+.line-height-1 {
+  line-height: 1;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
@@ -349,7 +353,7 @@ article {
   gap: 2rem !important;
 }
 .gap-5 {
-  gap: 4rem !important;
+  gap: 3rem !important;
 }
 
 /* Padding */

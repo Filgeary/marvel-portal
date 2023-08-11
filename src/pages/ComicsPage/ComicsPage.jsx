@@ -9,9 +9,13 @@ const ComicsPage = () => {
     <div className='container d-grid gap-5'>
       <ComicsBanner />
 
-      <ErrorBoundary>
-        <ComicsListContainer />
-      </ErrorBoundary>
+      <div className='d-grid align-items-start gap-4'>
+        <h1 className='text-gradient line-height-1'>Comics</h1>
+
+        <ErrorBoundary>
+          <ComicsListContainer />
+        </ErrorBoundary>
+      </div>
     </div>
   )
 }
