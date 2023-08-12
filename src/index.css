@@ -227,6 +227,26 @@ article {
   -webkit-background-clip: text;
 }
 
+.font-light {
+  color: var(--cra-font-light);
+}
+.font-dark {
+  color: var(--cra-font-dark);
+}
+.font-accent {
+  color: var(--cra-accent-color);
+}
+
+.f-size-150 {
+  font-size: 150%;
+}
+.f-size-200 {
+  font-size: 200%;
+}
+.f-size-250 {
+  font-size: 250%;
+}
+
 .line-height-1 {
   line-height: 1;
 }
@@ -290,6 +310,10 @@ article {
 }
 .w-60 {
   width: 60% !important;
+}
+
+.h-100 {
+  height: 100%;
 }
 
 .d-flex {
@@ -429,6 +453,9 @@ article {
 }
 .m-auto {
   margin: auto !important;
+}
+.m-top-auto {
+  margin-top: auto !important;
 }
 .mb-0 {
   margin-bottom: 0 !important;
