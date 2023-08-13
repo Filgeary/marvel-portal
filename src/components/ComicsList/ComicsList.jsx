@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformComic } from '../../utils/apiAdapter'
 import styles from './ComicsList.module.css'
@@ -37,8 +38,8 @@ const ComicsList = ({ comicsList, onLoadMore, isLoading, hasMoreComics }) => {
               data-testid='comicsListItem'
               className={styles.listItem}
             >
-              <a
-                href={`/comics/${id}`}
+              <Link
+                to={`/comics/${id}`}
                 className={styles.listLink}
               >
                 <figure className='overflow-hidden'>
@@ -57,7 +58,7 @@ const ComicsList = ({ comicsList, onLoadMore, isLoading, hasMoreComics }) => {
                   <small className={styles.onsaleDate}>{onsaleDate}</small>
                   <small className={styles.printPrice}>{printPrice}</small>
                 </div>
-              </a>
+              </Link>
             </li>
           )
         })}

@@ -1,11 +1,20 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import App from './App'
+
+const initRender = () => {
+  render(
+    <MemoryRouter>
+      <App />
+    </MemoryRouter>,
+  )
+}
 
 describe('App', () => {
   it('should make initial render properly', async () => {
-    render(<App />)
+    initRender()
 
     // AppHeader
     expect(screen.getByRole('heading', { name: /marvel portal/i })).toBeInTheDocument()
@@ -18,7 +27,7 @@ describe('App', () => {
   })
 
   it('should go over navigation links & render certain pages', async () => {
-    render(<App />)
+    initRender()
 
     // characters page
     userEvent.click(screen.getByRole('link', { name: /characters/i }))

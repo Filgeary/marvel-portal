@@ -7,10 +7,10 @@ import { useFetchComicById } from '../../hooks/useFetchComicById'
 
 /**
  * @param {object} props
- * @param {number} props.id
+ * @param {string} props.id
  */
 const ComicProfileContainer = ({ id }) => {
-  const { responseData, isLoading, isError, errorMsg } = useFetchComicById(String(id))
+  const { responseData, isLoading, isError, errorMsg } = useFetchComicById(id)
 
   // @ts-ignore
   const comic = responseData?.data?.results?.at(0) // TODO: add types

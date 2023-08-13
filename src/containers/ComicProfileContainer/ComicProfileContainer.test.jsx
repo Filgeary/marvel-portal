@@ -5,7 +5,7 @@ import { BASE_MARVEL_URL } from '../../constants'
 import { server } from '../../test/mocks/server'
 import ComicProfileContainer from './ComicProfileContainer'
 
-const initRender = (id = 95790) => {
+const initRender = (id = '95790') => {
   render(<ComicProfileContainer id={id} />)
 }
 
