@@ -1,11 +1,15 @@
 import cn from 'clsx'
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import omgSticker from '../../assets/images/omg.png'
 import styles from './AppHeader.module.css'
 
 const AppHeader = () => {
   return (
-    <header className={styles.header}>
+    <header
+      className={styles.header}
+      data-testid='appHeader'
+    >
       <div className={cn('container', styles.wrapper)}>
         <img
           data-id='omgSticker'
@@ -14,32 +18,40 @@ const AppHeader = () => {
           className={styles.omgSticker}
         />
         <h1>
-          <a
-            href='#home'
+          <Link
+            to='/'
             className={styles.titleLink}
           >
             MARVEL <small style={{ fontSize: '65%' }}>portal</small>
-          </a>
+          </Link>
         </h1>
 
         <nav>
           <ul className='d-flex gap-1 align-items-center'>
-            <li>
-              <a
-                href='#characters'
+            <li className={styles.navListItem}>
+              <NavLink
+                to='/characters'
                 className={styles.link}
+                style={({ isActive }) => ({
+                  color: isActive ? 'var(--cra-font-light)' : '',
+                })}
               >
                 Characters
-              </a>
+              </NavLink>
+              <span className='pl-05'>/</span>
             </li>
-            {' / '}
-            <li>
-              <a
-                href='#comics'
+
+            <li className={styles.navListItem}>
+              <NavLink
+                to='/comics'
                 className={styles.link}
+                style={({ isActive }) => ({
+                  color: isActive ? 'var(--cra-font-light)' : '',
+                })}
               >
                 Comics
-              </a>
+              </NavLink>
+              <span className='pl-05'>/</span>
             </li>
           </ul>
         </nav>

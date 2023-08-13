@@ -86,7 +86,7 @@ interface CollectedIssue {
 }
 
 interface ComicDate {
-  type: 'onsaleDate' | 'focDate'
+  type: 'onsaleDate' | 'focDate' | 'unlimitedDate' | 'digitalPurchaseDate'
   date: Date
 }
 
@@ -115,7 +115,7 @@ interface Creators {
 interface CreatorSummary {
   resourceURI: string
   name: string
-  role: string
+  role: 'writer' | 'inker' | 'penciler' | 'colorist'
 }
 
 interface Characters {

@@ -14,9 +14,9 @@
 
 .omgSticker {
   position: absolute;
-  top: -45%;
+  top: -57%;
   left: 45%;
-  width: 128px;
+  width: 115px;
   height: auto;
   z-index: 100;
 }
@@ -26,10 +26,21 @@
   color: var(--cra-font-light);
 }
 
+.navListItem:last-child > span {
+  display: none;
+}
+
 .link {
   font-family: 'DynaPuff', cursive;
   font-size: larger;
   color: var(--cra-bg-dark);
+  transition: color 300ms;
+}
+.link:hover,
+.link:focus,
+.link:active {
+  color: var(--cra-font-light);
+  transition: color 300ms;
 }
 
 @media (max-width: 1199px) {

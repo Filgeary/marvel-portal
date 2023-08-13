@@ -8,13 +8,13 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(216px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(206px, 1fr));
+  gap: 0.5rem;
   justify-items: center;
 }
 
 .listItem {
-  max-width: 216px;
+  max-width: 206px;
 }
 
 .listLink {
@@ -34,6 +34,16 @@
 .listLink:focus img,
 .listLink:active img {
   transform: scale(1.07);
+}
+
+.listLink figure {
+  border-bottom: 2px solid var(--cra-accent-color);
+  transition: all 300ms;
+}
+.listLink:hover figure,
+.listLink:focus figure,
+.listLink:active figure {
+  border-bottom: 2px solid var(--cra-font-light);
 }
 
 .title {

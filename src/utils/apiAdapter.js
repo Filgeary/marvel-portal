@@ -25,7 +25,7 @@ export const transformCharacter = (char, imageVariant, isFullDescription = true)
 export const transformComic = (comic, imageVariant) => {
   if (!comic) return
 
-  const { id, title, thumbnail, dates, prices } = comic
+  const { id, title, thumbnail, description, dates, prices, creators } = comic
 
   const date = dates?.find(elem => elem.type === 'onsaleDate')?.date
   const onsaleDate = date
@@ -38,12 +38,22 @@ export const transformComic = (comic, imageVariant) => {
 
   const price = prices?.find(elem => elem.type === 'printPrice')?.price
   const printPrice = price ? `$${price}` : 'Not Available'
+  const creatorWriter = creators?.items?.find(creator => creator.role === 'writer')?.name
+  const creatorInker = creators?.items?.find(creator => creator.role === 'inker')?.name
+  const creatorPenciler = creators?.items?.find(creator => creator.role === 'penciler')?.name
+  const creatorColorist = creators?.items?.find(creator => creator.role === 'colorist')?.name
 
   return {
     id,
     title,
+    description: description || 'No Description',
     thumbnail: thumbnail?.path + imageVariant + `.${thumbnail?.extension}`,
     onsaleDate,
     printPrice,
+    creatorWriter,
+    creatorInker,
+    creatorPenciler,
+    creatorColorist,
+    allCreators: creators,
   }
 }

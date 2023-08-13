@@ -1,38 +1,41 @@
 import React from 'react'
-import AppFooter from '../components/AppFooter'
-import AppHeader from '../components/AppHeader'
-import ComicsBanner from '../components/ComicsBanner'
-import ErrorBoundary from '../components/_shared/ErrorBoundary'
-import CharListContainer from '../containers/CharListContainer'
-import ComicsListContainer from '../containers/ComicsListContainer'
-import RandomCharContainer from '../containers/RandomCharContainer'
-import styles from './App.module.css'
+import { Route, Routes } from 'react-router-dom'
+import NotFound404 from '../components/_shared/NotFound404'
+import AppLayout from '../layout/AppLayout'
+import CharactersPage from '../pages/CharactersPage'
+import ComicsPage from '../pages/ComicsPage'
+import HomePage from '../pages/HomePage'
+import SingleComicPage from '../pages/SingleComicPage'
 
 const App = () => {
   return (
-    <div className={styles.wrapper}>
-      <AppHeader />
+    <AppLayout>
+      <Routes>
+        <Route
+          path='/'
+          element={<HomePage />}
+        />
 
-      <main className={styles.main}>
-        <div className='container d-grid gap-5'>
-          <ComicsBanner />
+        <Route
+          path='/characters'
+          element={<CharactersPage />}
+        />
 
-          <ErrorBoundary>
-            <ComicsListContainer />
-          </ErrorBoundary>
-        </div>
+        <Route
+          path='/comics'
+          element={<ComicsPage />}
+        />
+        <Route
+          path='/comics/:id'
+          element={<SingleComicPage />}
+        />
 
-        <ErrorBoundary>
-          <RandomCharContainer />
-        </ErrorBoundary>
-
-        <ErrorBoundary>
-          <CharListContainer />
-        </ErrorBoundary>
-      </main>
-
-      <AppFooter />
-    </div>
+        <Route
+          path='*'
+          element={<NotFound404 />}
+        />
+      </Routes>
+    </AppLayout>
   )
 }
 

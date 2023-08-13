@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import comicsResponseJSON from '../../__fixtures/api/comics.json'
 import ComicsList from './ComicsList'
 
@@ -14,12 +15,14 @@ const initRender = (comicsListArg, isLoading = false, hasMoreComics = true) => {
   const onLoadMoreMocked = jest.fn()
 
   render(
-    <ComicsList
-      comicsList={comicsListArg ?? comicsList}
-      onLoadMore={onLoadMoreMocked}
-      isLoading={isLoading}
-      hasMoreComics={hasMoreComics}
-    />,
+    <MemoryRouter>
+      <ComicsList
+        comicsList={comicsListArg ?? comicsList}
+        onLoadMore={onLoadMoreMocked}
+        isLoading={isLoading}
+        hasMoreComics={hasMoreComics}
+      />
+    </MemoryRouter>,
   )
 
   return {

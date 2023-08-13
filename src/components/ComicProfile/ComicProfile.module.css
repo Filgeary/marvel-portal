@@ -1,7 +1,7 @@
-.footer {
-  margin-top: auto;
-  color: var(--cra-font-light);
-  background: var(--cra-bg-dark);
+.wrapper {
+  display: grid;
+  align-items: start;
+  grid-template-columns: 1fr 2fr;
 }
 
 @media (max-width: 1199px) {

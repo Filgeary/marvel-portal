@@ -1,7 +1,16 @@
-.footer {
-  margin-top: auto;
+.heading {
+  font-size: 220%;
   color: var(--cra-font-light);
-  background: var(--cra-bg-dark);
+  text-align: center;
+}
+
+.title {
+  font-size: 140%;
+  line-height: 40px;
+  background-image: linear-gradient(0deg, var(--cra-accent-color), fuchsia);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 @media (max-width: 1199px) {
