@@ -9,7 +9,7 @@ describe('App', () => {
     renderWithProviders(<App />)
 
     // AppHeader
-    expect(screen.getByRole('heading', { name: /marvel portal/i })).toBeInTheDocument()
+    await screen.findByRole('heading', { name: /marvel portal/i })
 
     // RandomChar
     await screen.findByTestId('randomCharTitle')

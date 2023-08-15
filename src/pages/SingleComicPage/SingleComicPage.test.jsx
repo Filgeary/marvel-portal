@@ -7,12 +7,10 @@ describe('SingleComicPage', () => {
   it('should handle certain comic path & render SingleComicPage', async () => {
     renderWithProviders(<App />, { route: '/comics/95790' })
 
-    expect(screen.getByTestId('singleComicPage')).toBeInTheDocument()
+    await screen.findByTestId('singleComicPage')
 
     // wait loading data
     await screen.findByTestId('comicProfile')
-    expect(
-      screen.getByRole('heading', { name: /captain marvel \(2019\) #44/i }),
-    ).toBeInTheDocument()
+    await screen.findByRole('heading', { name: /captain marvel \(2019\) #44/i })
   })
 })
