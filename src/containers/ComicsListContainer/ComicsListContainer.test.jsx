@@ -1,18 +1,14 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { rest } from 'msw'
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
 import { BASE_MARVEL_URL } from '../../constants'
 import { server } from '../../test/mocks/server'
+import { renderWithProviders } from '../../test/testUtils'
 import ComicsListContainer from './ComicsListContainer'
 
 const initRender = () => {
-  render(
-    <MemoryRouter>
-      <ComicsListContainer />
-    </MemoryRouter>,
-  )
+  renderWithProviders(<ComicsListContainer />)
 }
 
 describe('ComicsListContainer', () => {
