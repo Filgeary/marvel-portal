@@ -1,26 +1,16 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import React from 'react'
-import { MemoryRouter } from 'react-router-dom'
 import App from '../../App'
-
-const initRender = (path = '/comics/95790') => {
-  render(
-    <MemoryRouter initialEntries={[path]}>
-      <App />
-    </MemoryRouter>,
-  )
-}
+import { renderWithProviders } from '../../test/testUtils'
 
 describe('SingleComicPage', () => {
   it('should handle certain comic path & render SingleComicPage', async () => {
-    initRender()
+    renderWithProviders(<App />, { route: '/comics/95790' })
 
-    expect(screen.getByTestId('singleComicPage')).toBeInTheDocument()
+    await screen.findByTestId('singleComicPage')
 
     // wait loading data
     await screen.findByTestId('comicProfile')
-    expect(
-      screen.getByRole('heading', { name: /captain marvel \(2019\) #44/i }),
-    ).toBeInTheDocument()
+    await screen.findByRole('heading', { name: /captain marvel \(2019\) #44/i })
   })
 })

@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
 import App from './App'
+import { AppProvider } from './providers/AppProvider'
+
 import './index.css'
 
 let root
@@ -10,8 +11,8 @@ if (rootElem) root = ReactDOM.createRoot(rootElem)
 
 root?.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <AppProvider>
       <App />
-    </BrowserRouter>
+    </AppProvider>
   </React.StrictMode>,
 )

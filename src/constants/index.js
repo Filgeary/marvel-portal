@@ -1,3 +1,5 @@
+export const IS_TEST = process.env.NODE_ENV === 'test'
+
 export const MARVEL_PUBLIC_KEY = process.env.REACT_APP_MARVEL_PUBLIC_KEY ?? ''
 export const BASE_MARVEL_URL = 'https://gateway.marvel.com/v1/public'
 
