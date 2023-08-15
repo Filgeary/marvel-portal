@@ -6,6 +6,7 @@
 
 - React 18, Hooks
 - Custom Hooks
+- React Router
 - CSS Modules
 - Typed API Models with `d.ts`
 - Testing
@@ -17,6 +18,7 @@
 - Random Character block
 - Characters List with Character Info
 - Comics List
+- Pages: Characters, Comics/SingleComic
 
 ## Dev Features
 
@@ -26,10 +28,9 @@
 
 ## TODO
 
-- [ ] Routing
 - [ ] Animations
 - [ ] New Features like Favorites, complex Filters ?
 - [ ] Store/Context ?
 - [ ] External DB ?
-- [ ] full TS ?
+- [ ] Rewrite to TS ?
 - [ ] e2e tests ?
