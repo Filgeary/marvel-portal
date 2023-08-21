@@ -1,9 +1,4 @@
-.wrapper {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  gap: 1rem;
-  align-items: start;
-}
+/* styles */
 
 @media (max-width: 1199px) {
   /* desktop (<= 1199) */
