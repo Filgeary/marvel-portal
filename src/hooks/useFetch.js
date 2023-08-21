@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { validateError } from '../utils'
 
 /**
@@ -37,10 +37,12 @@ export const useFetch = (cbLikePromise, deps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [...deps])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const responseDataMemo = useMemo(() => responseData, [isLoading])
   const reFetch = useCallback(() => fetchData(), [fetchData])
 
   return {
-    responseData,
+    responseData: responseDataMemo,
     isLoading,
     isError,
     errorMsg,

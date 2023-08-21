@@ -33,4 +33,10 @@ describe('App', () => {
     userEvent.click(screen.getByRole('link', { name: /marvel portal/i }))
     await screen.findByTestId('randomCharTitle')
   })
+
+  it('should render NotFound404 on unknown route', async () => {
+    renderWithProviders(<App />, { route: '/unknown-route' })
+
+    await screen.findByTestId('notFound404')
+  })
 })

@@ -7,7 +7,13 @@ import { server } from '../../test/mocks/server'
 import CharListContainer from './CharListContainer'
 
 const initRender = () => {
-  render(<CharListContainer />)
+  const onSelectCharMocked = jest.fn()
+
+  render(<CharListContainer onSelectChar={onSelectCharMocked} />)
+
+  return {
+    onSelectCharMocked,
+  }
 }
 
 describe('CharListContainer', () => {
@@ -40,24 +46,12 @@ describe('CharListContainer', () => {
     expect(screen.getByRole('heading', { name: /server error/i })).toBeInTheDocument()
   })
 
-  it('should click on charCard & show charInfo aside', async () => {
-    initRender()
-
-    expect(screen.getByTestId('skeleton')).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /select a character, please/i })).toBeInTheDocument()
+  it('should click on charCard & call cb', async () => {
+    const { onSelectCharMocked } = initRender()
 
     await screen.findByRole('heading', { name: /characters list/i })
     userEvent.click(screen.getByRole('heading', { name: /guardians of the galaxy/i }))
-
-    await screen.findByTestId('charInfo-charTitle')
-
-    // full description
-    expect(
-      screen.getByText(
-        /a group of cosmic adventurers brought together by star-lord, the guardians of the galaxy protect the universe from threats all across space\. the team also includes drax, gamora, groot and rocket raccoon!/i,
-      ),
-    ).toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /comics:/i })).toBeInTheDocument()
+    expect(onSelectCharMocked).toHaveBeenCalledTimes(1)
   })
 
   it('should click on LoadMore & fetch additional chars', async () => {
@@ -70,7 +64,7 @@ describe('CharListContainer', () => {
     // fetch additional chars via click
     userEvent.click(screen.getByRole('button', { name: /load more/i }))
     await screen.findByRole('button', { name: /loading.../i })
-    await screen.findByRole('button', { name: /load more/i })
+    await screen.findByRole('heading', { name: /data is updated/i })
     expect(screen.getAllByTestId('charListItem')).toHaveLength(36)
   })
 })

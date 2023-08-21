@@ -1,17 +1,19 @@
 import uniqBy from 'lodash/uniqBy'
-import React, { useState } from 'react'
-import CharInfo from '../../components/CharInfo'
+import React, { useEffect, useState } from 'react'
 import CharList from '../../components/CharList'
 import ErrorMessage from '../../components/_shared/ErrorMessage'
 import Spinner from '../../components/_shared/Spinner'
 import { PAGE_LIMIT_CHAR } from '../../constants'
 import { useFetchCharacters } from '../../hooks/useFetchCharacters'
-import styles from './CharListContainer.module.css'
+// import styles from "./CharListContainer.module.css"
 
-const charListInitial = []
-
-const CharListContainer = () => {
-  const [selectedChar, setSelectedChar] = useState(null) // TODO: add types
+/**
+ * @param {object} props
+ * @param {(char: any) => void} props.onSelectChar // TODO: add types
+ */
+const CharListContainer = ({ onSelectChar }) => {
+  const [charList, setCharList] = useState([]) // TODO: add types
+  const [isUpdatedData, setIsUpdatedData] = useState(false)
   const [pageOffset, setPageOffset] = useState(0)
 
   const { responseData, isLoading, isError, errorMsg, isInitialFetching } = useFetchCharacters({
@@ -21,40 +23,45 @@ const CharListContainer = () => {
 
   // TODO: add types
   // @ts-ignore
-  const { results = [], offset = 0, count = 0, total = 0 } = responseData?.data ?? {}
+  const { results = [], offset, count, total } = responseData?.data ?? {}
 
-  // make infinite adding of new chars
-  charListInitial.push(...results)
-  const charList = uniqBy(charListInitial, 'id')
+  useEffect(() => {
+    // @ts-ignore
+    setCharList(prev => [...prev, ...results])
+    setIsUpdatedData(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offset])
+
+  const uniqedCharList = uniqBy(charList, 'id')
 
   const handleSelectChar = id => {
-    const selectedChar = charList?.find(char => char.id === id)
-    setSelectedChar(selectedChar)
+    const selectedChar = uniqedCharList?.find(char => char.id === id)
+    onSelectChar(selectedChar)
   }
 
   const handleLoadMore = () => {
     setPageOffset(prevState => prevState + PAGE_LIMIT_CHAR)
+    setIsUpdatedData(false)
   }
 
   const hasMoreChars = total - offset - count > 0
 
   return (
-    <div className={styles.wrapper}>
-      <div style={{ minHeight: 250 }}>
-        {isLoading && isInitialFetching && <Spinner />}
-        {isError && <ErrorMessage text={errorMsg} />}
-        {!isError && !isInitialFetching && (
+    <div style={{ minHeight: 250 }}>
+      {isLoading && isInitialFetching && <Spinner />}
+      {isError && <ErrorMessage text={errorMsg} />}
+      {!isError && !isInitialFetching && (
+        <>
           <CharList
-            charList={charList}
-            onSelectChar={id => handleSelectChar(id)}
+            charList={uniqedCharList}
+            onSelectChar={handleSelectChar}
             onLoadMore={handleLoadMore}
             isLoading={isLoading}
             hasMoreChars={hasMoreChars}
           />
-        )}
-      </div>
-
-      <CharInfo char={selectedChar} />
+          {isUpdatedData && <h3 className='visually-hidden'>Data is updated</h3>}
+        </>
+      )}
     </div>
   )
 }

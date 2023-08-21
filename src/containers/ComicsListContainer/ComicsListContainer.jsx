@@ -1,5 +1,5 @@
 import uniqBy from 'lodash/uniqBy'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ComicsList from '../../components/ComicsList'
 import ErrorMessage from '../../components/_shared/ErrorMessage'
 import Spinner from '../../components/_shared/Spinner'
@@ -7,9 +7,9 @@ import { PAGE_LIMIT_COMIC } from '../../constants'
 import { useFetchComics } from '../../hooks/useFetchComics'
 // import styles from './ComicsListContainer.module.css'
 
-const comicsListInitial = []
-
 const ComicsListContainer = () => {
+  const [comicsList, setComicsList] = useState([]) // TODO: add types
+  const [isUpdatedData, setIsUpdatedData] = useState(false)
   const [pageOffset, setPageOffset] = useState(0)
 
   const { responseData, isLoading, isError, errorMsg, isInitialFetching } = useFetchComics({
@@ -19,13 +19,21 @@ const ComicsListContainer = () => {
 
   // TODO: add types
   // @ts-ignore
-  const { results = [], offset = 0, count = 0, total = 0 } = responseData?.data ?? {}
+  const { results = [], offset, count, total } = responseData?.data ?? {}
 
-  // make infinite adding of new comics
-  comicsListInitial.push(...results)
-  const comicsList = uniqBy(comicsListInitial, 'id')
+  useEffect(() => {
+    // @ts-ignore
+    setComicsList(prev => [...prev, ...results])
+    setIsUpdatedData(true)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [offset])
 
-  const handleLoadMore = () => setPageOffset(prev => prev + PAGE_LIMIT_COMIC)
+  const uniqedComicsList = uniqBy(comicsList, 'id')
+
+  const handleLoadMore = () => {
+    setPageOffset(prev => prev + PAGE_LIMIT_COMIC)
+    setIsUpdatedData(false)
+  }
 
   const hasMoreComics = total - offset - count > 0
 
@@ -34,12 +42,15 @@ const ComicsListContainer = () => {
       {isLoading && isInitialFetching && <Spinner />}
       {isError && <ErrorMessage text={errorMsg} />}
       {!isError && !isInitialFetching && (
-        <ComicsList
-          comicsList={comicsList}
-          onLoadMore={handleLoadMore}
-          isLoading={isLoading}
-          hasMoreComics={hasMoreComics}
-        />
+        <>
+          <ComicsList
+            comicsList={uniqedComicsList}
+            onLoadMore={handleLoadMore}
+            isLoading={isLoading}
+            hasMoreComics={hasMoreComics}
+          />
+          {isUpdatedData && <h3 className='visually-hidden'>Data is updated</h3>}
+        </>
       )}
     </div>
   )
