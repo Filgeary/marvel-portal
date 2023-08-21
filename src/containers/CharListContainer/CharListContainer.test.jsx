@@ -64,7 +64,7 @@ describe('CharListContainer', () => {
     // fetch additional chars via click
     userEvent.click(screen.getByRole('button', { name: /load more/i }))
     await screen.findByRole('button', { name: /loading.../i })
-    await screen.findByRole('button', { name: /load more/i })
+    await screen.findByRole('heading', { name: /data is updated/i })
     expect(screen.getAllByTestId('charListItem')).toHaveLength(36)
   })
 })

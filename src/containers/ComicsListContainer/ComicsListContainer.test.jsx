@@ -55,7 +55,7 @@ describe('ComicsListContainer', () => {
     // spinner should be only on initial fetching
     expect(screen.queryByTestId('spinner')).not.toBeInTheDocument()
     // loading ended
-    await screen.findByRole('button', { name: /load more/i })
+    await screen.findByRole('heading', { name: /data is updated/i })
 
     // 47!, Not 48! - because of dubbled comics in fixtures - 'Avengers (2023) #5' with id 101517
     expect(screen.getAllByTestId('comicsListItem')).toHaveLength(47)
