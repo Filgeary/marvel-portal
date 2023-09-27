@@ -565,6 +565,96 @@ img[data-id='omgSticker'] {
   animation: rotate 8s linear infinite;
 }
 
+/* Animations for React-transition-group
+================================================= */
+
+/* fadeInUp */
+/* ---------------------------------------------- */
+.fadeInUp-enter {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.fadeInUp-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 400ms ease-out;
+}
+
+.fadeInUp-exit {
+  opacity: 1;
+}
+
+.fadeInUp-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* fadeInLeft */
+/* ---------------------------------------------- */
+.fadeInLeft-enter {
+  opacity: 0;
+  transform: translateX(100px);
+}
+
+.fadeInLeft-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 400ms ease-out;
+}
+
+.fadeInLeft-exit {
+  opacity: 1;
+}
+
+.fadeInLeft-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* fadeInDownSlow */
+/* ---------------------------------------------- */
+.fadeInDownSlow-enter {
+  opacity: 0;
+  transform: translateY(-150px);
+}
+
+.fadeInDownSlow-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 700ms ease-out;
+}
+
+.fadeInDownSlow-exit {
+  opacity: 1;
+}
+
+.fadeInDownSlow-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* fadeOutDown */
+/* ---------------------------------------------- */
+.fadeOutDown-enter {
+  opacity: 1;
+}
+
+.fadeOutDown-enter-active {
+  opacity: 1;
+}
+
+.fadeOutDown-exit {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.fadeOutDown-exit-active {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 400ms ease-out;
+}
+
 /* Custom Scrollbars */
 /* =================================================== */
 
