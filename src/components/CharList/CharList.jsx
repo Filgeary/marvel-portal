@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { createRef } from 'react'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
 import styles from './CharList.module.css'
@@ -29,34 +30,45 @@ const CharList = ({ charList, onSelectChar, onLoadMore, isLoading, hasMoreChars 
       <h2 className='visually-hidden'>Characters List</h2>
 
       <ul className={styles.list}>
-        {transformedCharList?.map(char => {
-          const { id, name, thumbnail } = char ?? {}
+        <TransitionGroup component={null}>
+          {transformedCharList?.map(char => {
+            const { id, name, thumbnail } = char ?? {}
+            const nodeRef = createRef()
 
-          return (
-            <li
-              key={id}
-              data-testid='charListItem'
-              className={styles.listItem}
-            >
-              <button
-                type='button'
-                onClick={() => onSelectChar(id)}
+            return (
+              <CSSTransition
+                key={id}
+                nodeRef={nodeRef}
+                timeout={400}
+                classNames='fadeInUp'
               >
-                <img
-                  data-testid='charListItemImage'
-                  loading='lazy'
-                  src={thumbnail}
-                  alt={name}
-                  width={200}
-                  height={200}
-                />
-                <div className={styles.charNameWrapper}>
-                  <h3>{name}</h3>
-                </div>
-              </button>
-            </li>
-          )
-        })}
+                <li
+                  ref={nodeRef}
+                  data-testid='charListItem'
+                  className={styles.listItem}
+                >
+                  <button
+                    type='button'
+                    className={styles.listItemButton}
+                    onClick={() => onSelectChar(id)}
+                  >
+                    <img
+                      data-testid='charListItemImage'
+                      loading='lazy'
+                      src={thumbnail}
+                      alt={name}
+                      width={200}
+                      height={200}
+                    />
+                    <div className={styles.charNameWrapper}>
+                      <h3>{name}</h3>
+                    </div>
+                  </button>
+                </li>
+              </CSSTransition>
+            )
+          })}
+        </TransitionGroup>
       </ul>
 
       {hasMoreChars ? (

@@ -15,14 +15,17 @@
 
 .listItem {
   max-width: 200px;
+}
+
+.listItemButton {
   border-left: 2px solid var(--cra-accent-secondary-color);
   border-bottom: 2px solid var(--cra-accent-secondary-color);
   transform: translateY(0px);
   transition: all 300ms;
 }
-.listItem:hover,
-.listItem:focus,
-.listItem:active {
+.listItemButton:hover,
+.listItemButton:focus,
+.listItemButton:active {
   transform: translateY(-5px);
   box-shadow: 6px 6px 0 0 var(--cra-accent-color);
 }
