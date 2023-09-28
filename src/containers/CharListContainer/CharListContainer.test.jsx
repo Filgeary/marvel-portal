@@ -25,6 +25,7 @@ describe('CharListContainer', () => {
 
     // wait loading data
     await screen.findByRole('heading', { name: /characters list/i })
+    await screen.findByTestId('charListUList')
     expect(screen.getAllByTestId('charListItem')).toHaveLength(18)
 
     // check for unmounting spinner

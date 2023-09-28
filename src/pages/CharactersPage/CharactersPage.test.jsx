@@ -21,6 +21,7 @@ describe('CharactersPage', () => {
     expect(screen.getByRole('heading', { name: /select a character, please/i })).toBeInTheDocument()
 
     await screen.findByRole('heading', { name: /characters list/i })
+    await screen.findByTestId('charListUList')
     userEvent.click(screen.getByRole('heading', { name: /guardians of the galaxy/i }))
 
     await screen.findByTestId('charInfo-charTitle')
