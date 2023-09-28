@@ -2,6 +2,8 @@
 
 > based on CRA 5 & React 18
 
+Marvel Portal with Characters / Comics info using official Marvel API
+
 ## Tech Stack
 
 - React 18, Hooks
@@ -9,6 +11,7 @@
 - React Router
 - CSS Modules
 - Typed API Models with `d.ts`
+- Animations (React-Transition-group)
 - Testing
   - React-Testing-library (unit & integration)
   - MSW (API mocking)
@@ -19,6 +22,7 @@
 - Characters List with Character Info
 - Comics List
 - Pages: Characters, Comics/SingleComic
+- Animations
 
 ## Dev Features
 
@@ -28,9 +32,9 @@
 
 ## TODO
 
-- [ ] Animations
-- [ ] New Features like Favorites, complex Filters ?
-- [ ] Store/Context ?
-- [ ] External DB ?
 - [ ] Rewrite to TS ?
+- [ ] Fetch lib like React Query?
+- [ ] New Features like Favorites, Search, complex Filters ?
+- [ ] Store/Context ?
+- [ ] Auth, External DB ?
 - [ ] e2e tests ?

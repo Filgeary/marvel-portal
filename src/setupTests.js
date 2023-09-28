@@ -3,11 +3,12 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom'
+import { config } from 'react-transition-group'
+import { server } from './test/mocks/server.js'
 
 // MSW mocks
 // ==============================================
 
-import { server } from './test/mocks/server.js'
 // Establish API mocking before all tests.
 beforeAll(() => server.listen())
 
@@ -17,3 +18,9 @@ afterEach(() => server.resetHandlers())
 
 // Clean up after the tests are finished.
 afterAll(() => server.close())
+
+// React-transition-group
+// ==============================================
+
+// disable animations
+config.disabled = true
