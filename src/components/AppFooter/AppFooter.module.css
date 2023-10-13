@@ -4,6 +4,16 @@
   background: var(--cra-bg-dark);
 }
 
+.link {
+  color: var(--cra-font-light);
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+  color: var(--cra-link);
+}
+
 @media (max-width: 1199px) {
   /* desktop (<= 1199) */
 }
