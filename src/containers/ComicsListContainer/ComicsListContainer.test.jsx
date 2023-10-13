@@ -47,6 +47,7 @@ describe('ComicsListContainer', () => {
 
     // wait loading data
     await screen.findByRole('heading', { name: /comics list/i })
+    await screen.findByTestId('comicsListUList')
     expect(screen.getAllByTestId('comicsListItem')).toHaveLength(24)
 
     // fetch additional comics via click

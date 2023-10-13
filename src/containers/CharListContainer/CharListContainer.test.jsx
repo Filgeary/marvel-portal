@@ -50,7 +50,10 @@ describe('CharListContainer', () => {
   it('should click on charCard & call cb', async () => {
     const { onSelectCharMocked } = initRender()
 
+    // wait loading data
     await screen.findByRole('heading', { name: /characters list/i })
+    await screen.findByTestId('charListUList')
+
     userEvent.click(screen.getByRole('heading', { name: /guardians of the galaxy/i }))
     expect(onSelectCharMocked).toHaveBeenCalledTimes(1)
   })
