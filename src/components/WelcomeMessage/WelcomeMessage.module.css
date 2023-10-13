@@ -1,5 +1,6 @@
 .heading {
-  font-size: 220%;
+  padding: 1rem;
+  font-size: 250%;
   color: var(--cra-font-light);
   text-align: center;
 }

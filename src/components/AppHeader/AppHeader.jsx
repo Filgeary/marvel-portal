@@ -31,6 +31,7 @@ const AppHeader = () => {
             <li className={styles.navListItem}>
               <NavLink
                 to='/characters'
+                data-testid='navLink-characters'
                 className={styles.link}
                 style={({ isActive }) => ({
                   color: isActive ? 'var(--cra-font-light)' : '',
@@ -44,6 +45,7 @@ const AppHeader = () => {
             <li className={styles.navListItem}>
               <NavLink
                 to='/comics'
+                data-testid='navLink-comics'
                 className={styles.link}
                 style={({ isActive }) => ({
                   color: isActive ? 'var(--cra-font-light)' : '',

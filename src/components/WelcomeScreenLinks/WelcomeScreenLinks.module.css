@@ -1,0 +1,39 @@
+.heading {
+  font-size: 2rem;
+}
+
+.listItem > span {
+  font-size: 3rem;
+}
+.listItem:last-child > span {
+  display: none;
+}
+
+.link {
+  font-family: 'DynaPuff', cursive;
+  font-size: 2.6rem;
+  color: var(--cra-accent-color);
+  transition: color 300ms;
+}
+.link:hover,
+.link:focus,
+.link:active {
+  color: var(--cra-font-light);
+  transition: color 300ms;
+}
+
+@media (max-width: 1199px) {
+  /* desktop (<= 1199) */
+}
+
+@media (max-width: 1023px) {
+  /* tablet (<= 1023) */
+}
+
+@media (max-width: 767px) {
+  /* mobile -> tablet (<= 767) */
+}
+
+@media (max-width: 425px) {
+  /* only mobile (<= 425) */
+}
