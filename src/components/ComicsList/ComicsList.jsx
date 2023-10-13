@@ -16,6 +16,7 @@ import styles from './ComicsList.module.css'
 const ComicsList = ({ comicsList, onLoadMore, isLoading, hasMoreComics }) => {
   const listRef = useRef(null)
   const [isShowList, setIsShowList] = useState(false)
+  const [isAnimationEnded, setIsAnimationEnded] = useState(false)
   // for animations
   useEffect(() => {
     setIsShowList(Boolean(comicsList?.length))
@@ -42,6 +43,7 @@ const ComicsList = ({ comicsList, onLoadMore, isLoading, hasMoreComics }) => {
       <FadeInZoomIn
         in={isShowList}
         ref={listRef}
+        endCallback={() => setIsAnimationEnded(true)}
       >
         <ul
           data-testid='comicsListUList'
@@ -93,7 +95,7 @@ const ComicsList = ({ comicsList, onLoadMore, isLoading, hasMoreComics }) => {
         </ul>
       </FadeInZoomIn>
 
-      {hasMoreComics ? (
+      {hasMoreComics && isAnimationEnded && (
         <button
           type='button'
           className={'btn btn-primary btn-shadow-light m-auto'}
@@ -102,8 +104,6 @@ const ComicsList = ({ comicsList, onLoadMore, isLoading, hasMoreComics }) => {
         >
           {isLoading ? 'Loading...' : 'Load More'}
         </button>
-      ) : (
-        <h3 style={{ color: 'white' }}>No More Comics!</h3>
       )}
     </section>
   )
