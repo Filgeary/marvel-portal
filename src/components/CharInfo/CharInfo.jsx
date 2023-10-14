@@ -1,7 +1,6 @@
 import React from 'react'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
-import ExternalLink from '../_shared/ExternalLink'
 import Skeleton from '../_shared/Skeleton'
 import styles from './CharInfo.module.css'
 
@@ -21,7 +20,7 @@ const CharInfo = ({ char }) => {
     )
   }
 
-  const { name, description, thumbnail, externalLinks, comics } =
+  const { name, description, thumbnail, comics } =
     transformCharacter(char, IMAGE_VARIANT['200x200']) ?? {}
 
   return (
@@ -43,15 +42,6 @@ const CharInfo = ({ char }) => {
           >
             {name}
           </h2>
-          <div className='d-flex gap-1 justify-space-between'>
-            {externalLinks?.map(({ url, type }, idx) => (
-              <ExternalLink
-                key={idx}
-                href={url}
-                label={type}
-              />
-            ))}
-          </div>
         </div>
       </header>
 
@@ -61,13 +51,15 @@ const CharInfo = ({ char }) => {
         <div className='d-flex justify-space-between align-items-center gap-1'>
           <h3>Comics:</h3>
           {comics?.items?.length ? (
-            <small>{`Shown ${comics?.returned} from ${comics?.available}`}</small>
+            <small>{`Shown ${Math.min(comics?.returned ?? 0, 10)} from ${
+              comics?.available
+            }`}</small>
           ) : null}
         </div>
 
         {comics?.items?.length ? (
           <ul>
-            {comics?.items?.map(({ name, resourceURI }) => (
+            {comics?.items?.slice(0, 10).map(({ name, resourceURI }) => (
               <li
                 data-testid='charInfo-listItemComic'
                 key={resourceURI}
