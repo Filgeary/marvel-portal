@@ -13,7 +13,10 @@ const CharactersPage = () => {
 
       <div className={styles.wrapper}>
         <ErrorBoundary>
-          <CharListContainer onSelectChar={char => setSelectedChar(char)} />
+          <CharListContainer
+            onSelectChar={char => setSelectedChar(char)}
+            shouldFilterWithImages={true}
+          />
         </ErrorBoundary>
 
         <CharInfo char={selectedChar} />

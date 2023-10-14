@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 2rem;
   padding: 0;
-  padding-bottom: 1.5rem;
+  padding-bottom: 8rem;
 }
 
 .list {
@@ -11,6 +11,7 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
   justify-items: center;
+  margin-bottom: 1rem;
 }
 
 .listItem {

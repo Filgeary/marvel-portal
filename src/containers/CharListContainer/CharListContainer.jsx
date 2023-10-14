@@ -5,13 +5,15 @@ import ErrorMessage from '../../components/_shared/ErrorMessage'
 import Spinner from '../../components/_shared/Spinner'
 import { PAGE_LIMIT_CHAR } from '../../constants'
 import { useFetchCharacters } from '../../hooks/useFetchCharacters'
+import { filterCharactersWithImages } from '../../utils'
 // import styles from "./CharListContainer.module.css"
 
 /**
  * @param {object} props
  * @param {(char: any) => void} props.onSelectChar // TODO: add types
+ * @param {boolean} props.shouldFilterWithImages
  */
-const CharListContainer = ({ onSelectChar }) => {
+const CharListContainer = ({ onSelectChar, shouldFilterWithImages }) => {
   const [charList, setCharList] = useState([]) // TODO: add types
   const [isUpdatedData, setIsUpdatedData] = useState(false)
   const [pageOffset, setPageOffset] = useState(0)
@@ -24,10 +26,11 @@ const CharListContainer = ({ onSelectChar }) => {
   // TODO: add types
   // @ts-ignore
   const { results = [], offset, count, total } = responseData?.data ?? {}
+  const filteredChars = shouldFilterWithImages ? filterCharactersWithImages(results) : results
 
   useEffect(() => {
     // @ts-ignore
-    setCharList(prev => [...prev, ...results])
+    setCharList(prev => [...prev, ...filteredChars])
     setIsUpdatedData(true)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [offset])
