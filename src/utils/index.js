@@ -53,3 +53,12 @@ export const filterCharactersWithImages = data => {
 
   return data.filter(v => !v.thumbnail?.path?.includes('image_not_available'))
 }
+
+/**
+ * @param {import('../types/IComic').IComic[] | null | undefined} data
+ */
+export const filterComicsWithImages = data => {
+  if (!data) return
+
+  return data.filter(v => !v.thumbnail?.path?.includes('image_not_available'))
+}

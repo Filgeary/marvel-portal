@@ -13,7 +13,15 @@ const ComicsPage = () => {
         <h1 className='text-gradient line-height-1'>Comics</h1>
 
         <ErrorBoundary>
-          <ComicsListContainer />
+          <ComicsListContainer
+            shouldFilterWithImages={true}
+            queryParams={{
+              format: 'comic',
+              formatType: 'comic',
+              orderBy: '-focDate',
+              noVariants: true,
+            }}
+          />
         </ErrorBoundary>
       </div>
     </div>
