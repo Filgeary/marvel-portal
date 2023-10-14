@@ -4,17 +4,17 @@ import RandomChar from '../../components/RandomChar'
 import ErrorMessage from '../../components/_shared/ErrorMessage'
 import Spinner from '../../components/_shared/Spinner'
 import { useFetchRandomChar } from '../../hooks/useFetchRandomChar'
-import { randomCharId } from '../../utils'
+import { filterCharactersWithImages, randomCharId } from '../../utils'
 import styles from './RandomCharContainer.module.css'
 
 const RandomCharContainer = () => {
   const [offset, setOffset] = useState(() => randomCharId())
-  const { responseData, isLoading, isError, errorMsg } = useFetchRandomChar({ limit: 1, offset })
+  const { responseData, isLoading, isError, errorMsg } = useFetchRandomChar({ limit: 20, offset })
+  // @ts-ignore
+  const results = responseData?.data?.results // TODO: add types
+  const char = filterCharactersWithImages(results)?.at(0)
 
   const handleUpdate = () => setOffset(randomCharId())
-
-  // @ts-ignore
-  const char = responseData?.data?.results?.at(0) // TODO: add types
 
   return (
     <div className='container'>

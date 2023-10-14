@@ -7,7 +7,7 @@ export const transformCharacter = (char, imageVariant, isFullDescription = true)
   if (!char) return
 
   const { id, name, description, thumbnail, urls, comics } = char
-  const formattedDescription = isFullDescription ? description : truncateStr(description, 180)
+  const formattedDescription = isFullDescription ? description : truncateStr(description, 210)
 
   return {
     id,
