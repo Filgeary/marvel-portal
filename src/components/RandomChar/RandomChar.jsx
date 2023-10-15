@@ -1,7 +1,6 @@
 import React from 'react'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
-import ExternalLink from '../_shared/ExternalLink'
 import styles from './RandomChar.module.css'
 
 /**
@@ -9,12 +8,12 @@ import styles from './RandomChar.module.css'
  * @param {import('../../types/ICharacter').ICharacter | null | undefined} props.char
  */
 const RandomChar = ({ char }) => {
-  const { id, name, description, thumbnail, externalLinks } =
+  const { name, description, thumbnail } =
     transformCharacter(char, IMAGE_VARIANT['250x250'], false) ?? {}
 
   return (
     <section className={styles.charSection}>
-      <figure className='relative'>
+      <figure>
         <img
           data-testid='randomChar-thumbnail'
           src={thumbnail}
@@ -22,10 +21,9 @@ const RandomChar = ({ char }) => {
           width={250}
           height={250}
         />
-        <small className='absolute top-0 right-0'>{id}</small>
       </figure>
 
-      <div className='d-flex flex-column flex-grow-1 w-60 justify-space-between gap-1 p-1'>
+      <div className='d-flex flex-column flex-grow-1 w-60 gap-2 p-2'>
         <h2
           data-testid='randomCharTitle'
           className={styles.charTitle}
@@ -33,16 +31,6 @@ const RandomChar = ({ char }) => {
           {name}
         </h2>
         <p data-testid='randomChar-description'>{description}</p>
-
-        <div className='d-flex gap-1 justify-space-between align-items-end'>
-          {externalLinks?.map(({ url, type }, idx) => (
-            <ExternalLink
-              key={idx}
-              href={url}
-              label={type}
-            />
-          ))}
-        </div>
       </div>
     </section>
   )

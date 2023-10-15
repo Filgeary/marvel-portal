@@ -8,10 +8,20 @@ const AppFooter = () => {
       data-testid='appFooter'
     >
       <div className='container'>
-        <section className='pl-0'>
-          <h2 className='mb-2'>Project Info</h2>
-          <p>Developed by Filgeary</p>
+        <section className='p-1 pl-0 d-flex justify-space-between'>
+          <h2 className='visually-hidden'>Project Info</h2>
           <p>Data provided by Marvel. © 2023 MARVEL</p>
+          <p>
+            Developed by{' '}
+            <a
+              href='https://github.com/Filgeary'
+              target='_blank'
+              rel='noreferrer noopener'
+              className={styles.link}
+            >
+              Filgeary
+            </a>
+          </p>
         </section>
       </div>
     </footer>

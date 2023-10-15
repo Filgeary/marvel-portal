@@ -1,7 +1,7 @@
 import { API_TOTAL_CHARACTERS } from '../constants'
 
 export const randomInt = (min, max) => Math.floor(min + Math.random() * (max + 1 - min))
-export const randomCharId = () => randomInt(0, API_TOTAL_CHARACTERS - 1)
+export const randomCharId = () => randomInt(0, API_TOTAL_CHARACTERS - 20)
 
 export const upperFirstLetter = str => {
   if (typeof str !== 'string') return
@@ -43,4 +43,22 @@ export const validateError = err => {
   }
 
   return 'Unknown Error!'
+}
+
+/**
+ * @param {import('../types/ICharacter').ICharacter[] | null | undefined} data
+ */
+export const filterCharactersWithImages = data => {
+  if (!data) return
+
+  return data.filter(v => !v.thumbnail?.path?.includes('image_not_available'))
+}
+
+/**
+ * @param {import('../types/IComic').IComic[] | null | undefined} data
+ */
+export const filterComicsWithImages = data => {
+  if (!data) return
+
+  return data.filter(v => !v.thumbnail?.path?.includes('image_not_available'))
 }

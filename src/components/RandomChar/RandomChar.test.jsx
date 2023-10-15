@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react'
-// import userEvent from '@testing-library/user-event'
 import React from 'react'
 import charResponseJSON from '../../__fixtures/api/characterById.json'
 import RandomChar from './RandomChar'
@@ -16,12 +15,9 @@ describe('RandomChar', () => {
 
     expect(screen.getByRole('heading', { name: /guardians of the galaxy/i })).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /guardians of the galaxy/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /detail/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /wiki/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /comiclink/i })).toBeInTheDocument()
     expect(
       screen.getByText(
-        /^a group of cosmic adventurers brought together by star-lord, the guardians of the galaxy protect the universe from threats all across space. the team also includes drax, gamora,...$/i,
+        /^A group of cosmic adventurers brought together by Star-Lord, the Guardians of the Galaxy protect the universe from threats all across space. The team also includes Drax, Gamora, Groot and Rocket Raccoon!$/i,
       ),
     ).toBeInTheDocument()
   })

@@ -360,6 +360,10 @@ article {
   justify-content: space-between !important;
 }
 
+.justify-center {
+  justify-content: center !important;
+}
+
 /* Gap */
 .gap-0 {
   gap: 0px !important;

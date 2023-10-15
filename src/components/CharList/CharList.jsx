@@ -16,6 +16,7 @@ import styles from './CharList.module.css'
 const CharList = ({ charList, onSelectChar, onLoadMore, isLoading, hasMoreChars }) => {
   const listRef = useRef(null)
   const [isShowList, setIsShowList] = useState(false)
+  const [isAnimationEnded, setIsAnimationEnded] = useState(false)
   // for animations
   useEffect(() => {
     setIsShowList(Boolean(charList?.length))
@@ -42,6 +43,7 @@ const CharList = ({ charList, onSelectChar, onLoadMore, isLoading, hasMoreChars 
       <FadeInZoomIn
         in={isShowList}
         ref={listRef}
+        endCallback={() => setIsAnimationEnded(true)}
       >
         <ul
           data-testid='charListUList'
@@ -89,7 +91,7 @@ const CharList = ({ charList, onSelectChar, onLoadMore, isLoading, hasMoreChars 
         </ul>
       </FadeInZoomIn>
 
-      {hasMoreChars ? (
+      {hasMoreChars && isAnimationEnded && (
         <button
           type='button'
           className={'btn btn-primary btn-shadow-light m-auto'}
@@ -98,8 +100,6 @@ const CharList = ({ charList, onSelectChar, onLoadMore, isLoading, hasMoreChars 
         >
           {isLoading ? 'Loading...' : 'Load More'}
         </button>
-      ) : (
-        <h3 style={{ color: 'white' }}>No More Characters!</h3>
       )}
     </section>
   )

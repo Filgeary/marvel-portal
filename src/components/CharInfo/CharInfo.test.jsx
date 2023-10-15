@@ -20,9 +20,6 @@ describe('CharInfo', () => {
 
     expect(screen.getByRole('heading', { name: /guardians of the galaxy/i })).toBeInTheDocument()
     expect(screen.getByRole('img', { name: /guardians of the galaxy/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /detail/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /wiki/i })).toBeInTheDocument()
-    expect(screen.getByRole('link', { name: /comiclink/i })).toBeInTheDocument()
 
     // full description
     expect(
@@ -32,8 +29,8 @@ describe('CharInfo', () => {
     ).toBeInTheDocument()
 
     expect(screen.getByRole('heading', { name: /comics:/i })).toBeInTheDocument()
-    expect(screen.getByText(/shown 20 from 382/i)).toBeInTheDocument()
-    expect(screen.getAllByTestId('charInfo-listItemComic')).toHaveLength(20)
+    expect(screen.getByText(/shown 10 from 382/i)).toBeInTheDocument()
+    expect(screen.getAllByTestId('charInfo-listItemComic')).toHaveLength(10)
   })
 
   it('should render fallback if char was not provided', () => {

@@ -16,6 +16,7 @@ export const FadeInZoomIn = forwardRef((props, forwardedRef) => {
       classNames='fadeInZoomIn'
       mountOnEnter
       unmountOnExit
+      addEndListener={props.endCallback}
     >
       {props.children}
     </CSSTransition>
@@ -34,6 +35,7 @@ export const FadeInUp = forwardRef((props, forwardedRef) => {
       classNames='fadeInUp'
       mountOnEnter
       unmountOnExit
+      addEndListener={props.endCallback}
     >
       {props.children}
     </CSSTransition>

@@ -7,8 +7,13 @@ import { server } from '../../test/mocks/server'
 import { renderWithProviders } from '../../test/testUtils'
 import ComicsListContainer from './ComicsListContainer'
 
-const initRender = () => {
-  renderWithProviders(<ComicsListContainer />)
+const initRender = (shouldFilterWithImages = false, queryParams = {}) => {
+  renderWithProviders(
+    <ComicsListContainer
+      shouldFilterWithImages={shouldFilterWithImages}
+      queryParams={queryParams}
+    />,
+  )
 }
 
 describe('ComicsListContainer', () => {
@@ -47,6 +52,7 @@ describe('ComicsListContainer', () => {
 
     // wait loading data
     await screen.findByRole('heading', { name: /comics list/i })
+    await screen.findByTestId('comicsListUList')
     expect(screen.getAllByTestId('comicsListItem')).toHaveLength(24)
 
     // fetch additional comics via click

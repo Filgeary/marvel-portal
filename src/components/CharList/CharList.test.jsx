@@ -62,10 +62,9 @@ describe('CharList', () => {
     expect(screen.getByRole('button', { name: /loading.../i })).toBeInTheDocument()
   })
 
-  it('should show fallback text if no more chars to fetch', () => {
+  it('should not show `load more` button if no more chars to fetch', () => {
     initRender(charList, false, false)
 
     expect(screen.queryByRole('button', { name: /load more/i })).not.toBeInTheDocument()
-    expect(screen.getByRole('heading', { name: /No More Characters!/i })).toBeInTheDocument()
   })
 })
