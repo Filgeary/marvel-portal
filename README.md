@@ -1,5 +1,7 @@
 # marvel-portal
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0b6a5fe9-3a17-455e-98ce-21364f265c62/deploy-status)](https://app.netlify.com/sites/filgeary-marvel-portal/deploys)
+
 > ⚠️ WIP
 >
 > tested on desktop resolution > 1200px
