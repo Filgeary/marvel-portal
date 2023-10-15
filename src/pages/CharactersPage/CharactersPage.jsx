@@ -9,7 +9,12 @@ const CharactersPage = () => {
 
   return (
     <div className='container d-grid align-items-start gap-4'>
-      <h1 className='text-gradient line-height-1'>Characters</h1>
+      <h1
+        className='text-gradient line-height-1'
+        data-testid='charactersPage-heading'
+      >
+        Characters
+      </h1>
 
       <div className={styles.wrapper}>
         <ErrorBoundary>
