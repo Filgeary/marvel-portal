@@ -6,10 +6,15 @@ import { BASE_MARVEL_URL } from '../../constants'
 import { server } from '../../test/mocks/server'
 import CharListContainer from './CharListContainer'
 
-const initRender = () => {
+const initRender = (shouldFilterWithImages = false) => {
   const onSelectCharMocked = jest.fn()
 
-  render(<CharListContainer onSelectChar={onSelectCharMocked} />)
+  render(
+    <CharListContainer
+      onSelectChar={onSelectCharMocked}
+      shouldFilterWithImages={shouldFilterWithImages}
+    />,
+  )
 
   return {
     onSelectCharMocked,

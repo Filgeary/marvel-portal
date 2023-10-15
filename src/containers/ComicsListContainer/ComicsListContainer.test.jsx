@@ -7,8 +7,13 @@ import { server } from '../../test/mocks/server'
 import { renderWithProviders } from '../../test/testUtils'
 import ComicsListContainer from './ComicsListContainer'
 
-const initRender = () => {
-  renderWithProviders(<ComicsListContainer />)
+const initRender = (shouldFilterWithImages = false, queryParams = {}) => {
+  renderWithProviders(
+    <ComicsListContainer
+      shouldFilterWithImages={shouldFilterWithImages}
+      queryParams={queryParams}
+    />,
+  )
 }
 
 describe('ComicsListContainer', () => {
