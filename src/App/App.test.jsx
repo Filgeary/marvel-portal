@@ -23,11 +23,11 @@ describe('App', () => {
 
     // characters page
     userEvent.click(screen.getByTestId('navLink-characters'))
-    await screen.findByRole('heading', { name: /characters/i })
+    await screen.findByTestId('charactersPage-heading')
 
     // comics page
     userEvent.click(screen.getByTestId('navLink-comics'))
-    await screen.findByRole('heading', { name: /comics/i })
+    await screen.findByTestId('comicsPage-heading')
 
     // home page
     userEvent.click(screen.getByRole('link', { name: /marvel portal/i }))

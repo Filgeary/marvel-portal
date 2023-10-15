@@ -10,7 +10,12 @@ const ComicsPage = () => {
       <ComicsBanner />
 
       <div className='d-grid align-items-start gap-4'>
-        <h1 className='text-gradient line-height-1'>Comics</h1>
+        <h1
+          className='text-gradient line-height-1'
+          data-testid='comicsPage-heading'
+        >
+          Comics
+        </h1>
 
         <ErrorBoundary>
           <ComicsListContainer
