@@ -2,13 +2,22 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { rest } from 'msw'
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import { BASE_MARVEL_URL } from '../../constants'
 import { server } from '../../test/mocks/server'
 import RandomCharContainer from './RandomCharContainer'
 
+const initRender = () => {
+  render(
+    <MemoryRouter>
+      <RandomCharContainer />
+    </MemoryRouter>,
+  )
+}
+
 describe('RandomCharContainer', () => {
   it('should make initial fetch & render Random Character', async () => {
-    render(<RandomCharContainer />)
+    initRender()
 
     // initial spinner
     expect(screen.getByTestId('spinner')).toBeInTheDocument()
@@ -40,7 +49,7 @@ describe('RandomCharContainer', () => {
         return res(ctx.status(500), ctx.json({ message: 'Server Error' }))
       }),
     )
-    render(<RandomCharContainer />)
+    initRender()
 
     await screen.findByTestId('errorMessage')
     expect(screen.getByRole('heading', { name: /server error/i })).toBeInTheDocument()
@@ -52,7 +61,7 @@ describe('RandomCharContainer', () => {
         return res(ctx.status(500), ctx.json({ randomMessage: 'Server Error' }))
       }),
     )
-    render(<RandomCharContainer />)
+    initRender()
 
     await screen.findByTestId('errorMessage')
     expect(screen.getByRole('heading', { name: /Unknown Error!/i })).toBeInTheDocument()
@@ -64,7 +73,7 @@ describe('RandomCharContainer', () => {
         return res(ctx.status(301), ctx.json({ message: 'Server Error' }))
       }),
     )
-    render(<RandomCharContainer />)
+    initRender()
 
     await screen.findByTestId('errorMessage')
     expect(
@@ -73,7 +82,7 @@ describe('RandomCharContainer', () => {
   })
 
   it('should click on button & update character', async () => {
-    render(<RandomCharContainer />)
+    initRender()
 
     // check initial fetching flow
     expect(screen.getByTestId('spinner')).toBeInTheDocument()

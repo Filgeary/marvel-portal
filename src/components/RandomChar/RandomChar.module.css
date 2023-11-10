@@ -1,10 +1,29 @@
-.charSection {
+.charLink {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 250px;
   padding: 0;
+  font-family: system-ui, sans-serif;
+  color: var(--cra-font-dark);
   background: var(--cra-bg-light);
+}
+.overlay {
+  display: none;
+  justify-content: center;
+  place-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+}
+.charLink:hover .overlay {
+  display: flex;
 }
 
 .charTitle {
@@ -25,7 +44,7 @@
 
 @media (max-width: 767px) {
   /* mobile -> tablet (<= 767) */
-  .charSection {
+  .charLink {
     grid-template-columns: 1fr;
   }
 }

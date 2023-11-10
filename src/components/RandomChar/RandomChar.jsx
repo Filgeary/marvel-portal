@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
 import styles from './RandomChar.module.css'
@@ -8,11 +9,14 @@ import styles from './RandomChar.module.css'
  * @param {import('../../types/ICharacter').ICharacter | null | undefined} props.char
  */
 const RandomChar = ({ char }) => {
-  const { name, description, thumbnail } =
+  const { id, name, description, thumbnail } =
     transformCharacter(char, IMAGE_VARIANT['250x250'], false) ?? {}
 
   return (
-    <section className={styles.charSection}>
+    <Link
+      to={`/characters/${id}`}
+      className={styles.charLink}
+    >
       <figure>
         <img
           data-testid='randomChar-thumbnail'
@@ -32,7 +36,11 @@ const RandomChar = ({ char }) => {
         </h2>
         <p data-testid='randomChar-description'>{description}</p>
       </div>
-    </section>
+
+      <div className={styles.overlay}>
+        <p>Go To Character Page</p>
+      </div>
+    </Link>
   )
 }
 

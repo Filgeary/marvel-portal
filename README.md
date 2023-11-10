@@ -10,7 +10,7 @@
 >
 > for fun & learning purpose 😃
 
-Marvel Portal with Characters / Comics info using official Marvel API
+Marvel Portal with Characters / Comics using official Marvel API
 
 ## Tech Stack
 
@@ -29,7 +29,7 @@ Marvel Portal with Characters / Comics info using official Marvel API
 - Random Character block
 - Characters List with Character Info
 - Comics List
-- Pages: Characters, Comics/SingleComic
+- Pages: Characters/SingleCharacter, Comics/SingleComic
 
 ## Dev Features
 
@@ -39,7 +39,6 @@ Marvel Portal with Characters / Comics info using official Marvel API
 
 ## TODO
 
-- [ ] add Single Character Page ?
 - [ ] Rewrite to TS ?
 - [ ] Fetch lib like React Query ?
 - [ ] New Features like Favorites, Search, complex Filters ?

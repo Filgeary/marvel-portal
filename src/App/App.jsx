@@ -4,6 +4,7 @@ import AppLayout from '../layout/AppLayout'
 
 const HomePage = lazy(() => import('../pages/HomePage'))
 const CharactersPage = lazy(() => import('../pages/CharactersPage'))
+const SingleCharacterPage = lazy(() => import('../pages/SingleCharacterPage'))
 const ComicsPage = lazy(() => import('../pages/ComicsPage'))
 const SingleComicPage = lazy(() => import('../pages/SingleComicPage'))
 const NotFound404 = lazy(() => import('../components/_shared/NotFound404'))
@@ -20,6 +21,10 @@ const App = () => {
         <Route
           path='/characters'
           element={<CharactersPage />}
+        />
+        <Route
+          path='/characters/:id'
+          element={<SingleCharacterPage />}
         />
 
         <Route
