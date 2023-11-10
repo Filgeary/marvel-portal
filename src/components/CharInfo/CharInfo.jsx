@@ -1,4 +1,5 @@
 import React from 'react'
+import { ArrowLeft } from 'react-feather'
 import { Link } from 'react-router-dom'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
@@ -13,8 +14,8 @@ const CharInfo = ({ char }) => {
   if (!char) {
     return (
       <section className='d-grid align-items-start sticky top-1 p-0'>
-        <h2 style={{ paddingLeft: '1.5rem', color: 'var(--cra-font-light)' }}>
-          Select a Character, please
+        <h2 className={styles.selectCharHeading}>
+          <ArrowLeft /> Select a Character, please
         </h2>
         <Skeleton />
       </section>
