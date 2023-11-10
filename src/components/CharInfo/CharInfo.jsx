@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { IMAGE_VARIANT } from '../../constants'
 import { transformCharacter } from '../../utils/apiAdapter'
 import Skeleton from '../_shared/Skeleton'
@@ -20,7 +21,7 @@ const CharInfo = ({ char }) => {
     )
   }
 
-  const { name, description, thumbnail, comics } =
+  const { id, name, description, thumbnail, comics } =
     transformCharacter(char, IMAGE_VARIANT['200x200']) ?? {}
 
   return (
@@ -44,6 +45,13 @@ const CharInfo = ({ char }) => {
           </h2>
         </div>
       </header>
+
+      <Link
+        to={`/characters/${id}`}
+        className='btn btn-primary btn-shadow-dark'
+      >
+        Go to Character Page
+      </Link>
 
       <p data-testid='charInfo-description'>{description}</p>
 

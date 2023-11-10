@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-// import userEvent from '@testing-library/user-event'
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
 import charResponseJSON from '../../__fixtures/api/characterById.json'
 import CharInfo from './CharInfo'
 
@@ -11,7 +11,11 @@ const charResponseObj = JSON.parse(JSON.stringify(charResponseJSON))
 const char = charResponseObj.data?.results?.at(0)
 
 const initRender = char => {
-  render(<CharInfo char={char} />)
+  render(
+    <MemoryRouter>
+      <CharInfo char={char} />
+    </MemoryRouter>,
+  )
 }
 
 describe('CharInfo', () => {
